@@ -12,7 +12,7 @@ The repository contains several reconstructed versions:
   Full reconstruction of the extended Caltech/CDS technical-report version.
 
 - `Bullo_Murray_1995_PD_Control_simple.tex`  
-  A reading-oriented version of the extended Caltech/CDS technical-report with proofs omitted.
+  A reading-oriented version of the extended report with proofs omitted.
 
 - `Bullo_Murray_1995_PD_Control_ECC95.tex`  
   Reconstruction of the shorter two-column ECC'95 conference version.
@@ -176,9 +176,9 @@ The short conference version contains several formula or notation inconsistencie
 ```
 
    For body angular velocity, the Bernoulli/Jacobian expansion begins with
-   $\dot X=V^b+\frac12\operatorname{ad}_X(V^b)+\cdots$, and under
+   $\dot X=V^b+\frac12\mathrm{ad}_X(V^b)+\cdots$, and under
    $\mathfrak{so}(3)\simeq\mathbb{R}^3$ this gives
-   $\operatorname{ad}_x(\omega)=x\times\omega$.
+   $\mathrm{ad}_x(\omega)=x\times\omega$.
 
 2. **Missing proportional gain in the satellite Lyapunov function.**
 
@@ -219,19 +219,19 @@ U(g,V^s)=-f(g,V^s)-\begin{bmatrix}K_\omega\log_{\mathrm{SO}(3)}(R)\\K_vp\end{bma
    Printed short version:
 
 ```math
-V_e=\operatorname{Ad}_{g^{-1}}V_d+V.
+V_e=\mathrm{Ad}_{g^{-1}}V_d+V.
 ```
 
    Reconstruction:
 
 ```math
-V_e=V-\operatorname{Ad}_{g^{-1}}V_d.
+V_e=V-\mathrm{Ad}_{g^{-1}}V_d.
 ```
 
    Differentiating $e=g_d^{-1}g$ with $\dot g=gV$ and $\dot g_d=V_dg_d$ gives
 
 ```math
-\dot e=e\left(V-\operatorname{Ad}_{g^{-1}}V_d\right),
+\dot e=e\left(V-\mathrm{Ad}_{g^{-1}}V_d\right),
 ```
 
    which fixes the sign.
