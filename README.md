@@ -131,148 +131,108 @@ The reconstruction is intended to remain close to the printed sources. The follo
 
 The full reconstruction makes one confirmed mathematical correction to the printed 47-page source. The simplified reading version inherits the same correction.
 
-1. **Appendix A: missing factor in the final block expression for \(\mathcal{B}_X\).**
+1. **Appendix A: missing factor in the final block expression for $\mathcal{B}_X$.**
 
    The printed source gives the diagonal block at the end of Appendix A in the form
 
-   $$
-   I_3+\frac{1}{2}\widehat{\psi}
-   +(1-\alpha(\|\psi\|))\widehat{\psi}^{\,2}.
-   $$
+```math
+I_3+\frac{1}{2}\widehat{\psi}+(1-\alpha(\|\psi\|))\widehat{\psi}^{\,2}.
+```
 
    The reconstruction uses
 
-   $$
-   I_3+\frac{1}{2}\widehat{\psi}
-   +\frac{1-\alpha(\|\psi\|)}{\|\psi\|^2}\widehat{\psi}^{\,2}.
-   $$
+```math
+I_3+\frac{1}{2}\widehat{\psi}+\frac{1-\alpha(\|\psi\|)}{\|\psi\|^2}\widehat{\psi}^{\,2}.
+```
 
-   The denominator follows directly from the preceding derivation. With \(y=\|\psi\|\),
+   The denominator follows directly from the preceding derivation. With $y=\|\psi\|$,
 
-   $$
-   A-y^2B=\frac{1-\alpha(y)}{y^2}.
-   $$
+```math
+A-y^2B=\frac{1-\alpha(y)}{y^2}.
+```
 
    It also agrees with Lemma 3 and with the identity
 
-   $$
-   A(\psi)^{-T}
-   =
-   I_3+\frac{1}{2}\widehat{\psi}
-   +\frac{1-\alpha(\|\psi\|)}{\|\psi\|^2}\widehat{\psi}^{\,2}.
-   $$
+```math
+A(\psi)^{-T}=I_3+\frac{1}{2}\widehat{\psi}+\frac{1-\alpha(\|\psi\|)}{\|\psi\|^2}\widehat{\psi}^{\,2}.
+```
 
 ### ECC'95 conference version (7-page source)
 
 The short conference version contains several formula or notation inconsistencies that are corrected using the internally consistent formulas of the extended report.
 
-1. **Order of the cross product in the \(\mathrm{SO}(3)\) exponential-coordinate derivative.**
+1. **Order of the cross product in the $\mathrm{SO}(3)$ exponential-coordinate derivative.**
 
    Printed short version:
 
-   $$
-   \dot{x}
-   =
-   \omega_{\parallel}
-   +\beta(\|x\|)\omega_{\perp}
-   +\frac{1}{2}(\omega\times x).
-   $$
+```math
+\dot{x}=\omega_{\parallel}+\beta(\|x\|)\omega_{\perp}+\frac{1}{2}(\omega\times x).
+```
 
    Reconstruction:
 
-   $$
-   \dot{x}
-   =
-   \omega_{\parallel}
-   +\beta(\|x\|)\omega_{\perp}
-   +\frac{1}{2}(x\times\omega).
-   $$
+```math
+\dot{x}=\omega_{\parallel}+\beta(\|x\|)\omega_{\perp}+\frac{1}{2}(x\times\omega).
+```
 
    For body angular velocity, the Bernoulli/Jacobian expansion begins with
-   \(\dot X=V^b+\frac12\operatorname{ad}_X(V^b)+\cdots\), and under
-   \(\mathfrak{so}(3)\simeq\mathbb{R}^3\) this gives
-   \(\operatorname{ad}_x(\omega)=x\times\omega\).
+   $\dot X=V^b+\frac12\operatorname{ad}_X(V^b)+\cdots$, and under
+   $\mathfrak{so}(3)\simeq\mathbb{R}^3$ this gives
+   $\operatorname{ad}_x(\omega)=x\times\omega$.
 
 2. **Missing proportional gain in the satellite Lyapunov function.**
 
    Printed short version:
 
-   $$
-   W
-   =
-   \frac{1}{2}\|g\|_{\mathrm{SO}(3)}^2
-   +\frac{1}{2}\langle\omega^b,J\omega^b\rangle
-   +\epsilon\langle\log(g),J\omega^b\rangle.
-   $$
+```math
+W=\frac{1}{2}\|g\|_{\mathrm{SO}(3)}^2+\frac{1}{2}\langle\omega^b,J\omega^b\rangle+\epsilon\langle\log(g),J\omega^b\rangle.
+```
 
    Reconstruction:
 
-   $$
-   W
-   =
-   \frac{k_p}{2}\|g\|_{\mathrm{SO}(3)}^2
-   +\frac{1}{2}\langle\omega^b,J\omega^b\rangle
-   +\epsilon\langle\log(g),J\omega^b\rangle.
-   $$
+```math
+W=\frac{k_p}{2}\|g\|_{\mathrm{SO}(3)}^2+\frac{1}{2}\langle\omega^b,J\omega^b\rangle+\epsilon\langle\log(g),J\omega^b\rangle.
+```
 
-   The factor \(k_p\) is required for consistency with the feedback term
-   \(-k_p\log(g)\) and with the Lyapunov derivative calculation.
+   The factor $k_p$ is required for consistency with the feedback term
+   $-k_p\log(g)$ and with the Lyapunov derivative calculation.
 
 3. **Body/spatial velocity argument in the right-invariant double-geodesic law.**
 
    Printed short version:
 
-   $$
-   U(g,V^b)
-   =
-   -f(g,V^s)
-   -
-   \begin{bmatrix}
-   K_\omega\log_{\mathrm{SO}(3)}(R)\\
-   K_vp
-   \end{bmatrix}
-   -K_dV^s.
-   $$
+```math
+U(g,V^b)=-f(g,V^s)-\begin{bmatrix}K_\omega\log_{\mathrm{SO}(3)}(R)\\K_vp\end{bmatrix}-K_dV^s.
+```
 
    Reconstruction:
 
-   $$
-   U(g,V^s)
-   =
-   -f(g,V^s)
-   -
-   \begin{bmatrix}
-   K_\omega\log_{\mathrm{SO}(3)}(R)\\
-   K_vp
-   \end{bmatrix}
-   -K_dV^s.
-   $$
+```math
+U(g,V^s)=-f(g,V^s)-\begin{bmatrix}K_\omega\log_{\mathrm{SO}(3)}(R)\\K_vp\end{bmatrix}-K_dV^s.
+```
 
    The equation is explicitly for the right-invariant system
-   \(\dot g=V^s g\), and every term on the right-hand side already uses the spatial velocity \(V^s\).
+   $\dot g=V^s g$, and every term on the right-hand side already uses the spatial velocity $V^s$.
 
 4. **Sign of the velocity error in trajectory tracking.**
 
    Printed short version:
 
-   $$
-   V_e=\operatorname{Ad}_{g^{-1}}V_d+V.
-   $$
+```math
+V_e=\operatorname{Ad}_{g^{-1}}V_d+V.
+```
 
    Reconstruction:
 
-   $$
-   V_e=V-\operatorname{Ad}_{g^{-1}}V_d.
-   $$
+```math
+V_e=V-\operatorname{Ad}_{g^{-1}}V_d.
+```
 
-   Differentiating \(e=g_d^{-1}g\) with
-   \(\dot g=gV\) and \(\dot g_d=V_dg_d\) gives
+   Differentiating $e=g_d^{-1}g$ with $\dot g=gV$ and $\dot g_d=V_dg_d$ gives
 
-   $$
-   \dot e
-   =
-   e\left(V-\operatorname{Ad}_{g^{-1}}V_d\right),
-   $$
+```math
+\dot e=e\left(V-\operatorname{Ad}_{g^{-1}}V_d\right),
+```
 
    which fixes the sign.
 
@@ -280,39 +240,30 @@ The short conference version contains several formula or notation inconsistencie
 
    Printed short version:
 
-   $$
-   e_{\mathrm{hybrid}}
-   =
-   \begin{bmatrix}
-   RR_d^T & p-p_d\\
-   0 & 1
-   \end{bmatrix}.
-   $$
+```math
+e_{\mathrm{hybrid}}=\begin{bmatrix}RR_d^T & p-p_d\\0 & 1\end{bmatrix}.
+```
 
    Reconstruction:
 
-   $$
-   e_{\mathrm{hybrid}}
-   =
-   \begin{bmatrix}
-   R_d^TR & p-p_d\\
-   0 & 1
-   \end{bmatrix}.
-   $$
+```math
+e_{\mathrm{hybrid}}=\begin{bmatrix}R_d^TR & p-p_d\\0 & 1\end{bmatrix}.
+```
 
-   The corresponding transformed hybrid error is corrected consistently as well. The rotational part is intended to retain the natural error \(R_d^TR\); under a common left rotation \(R_0\),
+   The corresponding transformed hybrid error is corrected consistently as well. The rotational part is intended to retain the natural error $R_d^TR$; under a common left rotation $R_0$,
 
-   $$
-   (R_0R_d)^T(R_0R)=R_d^TR,
-   $$
+```math
+(R_0R_d)^T(R_0R)=R_d^TR,
+```
 
-   while the translational part transforms as \(R_0(p-p_d)\).
+   while the translational part transforms as $R_0(p-p_d)$.
 
-6. **Control-theoretic terminology in the \(\mathrm{SO}(3)\) second-order discussion.**
+6. **Control-theoretic terminology in the $\mathrm{SO}(3)$ second-order discussion.**
 
    The short version says “controllability problem” at the point where the objective is convergence to the identity equilibrium. The reconstruction uses “stabilization problem,” consistent with the theorem statements and the closed-loop objective.
 
 These corrections are editorial decisions in the reconstruction. The original publications remain the authoritative historical sources, and the changes above are documented so that readers can distinguish the reconstructed formulas from the printed versions.
+
 
 ## Disclaimer
 
