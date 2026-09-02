@@ -12,7 +12,7 @@ The repository contains several reconstructed versions:
   Full reconstruction of the extended Caltech/CDS technical-report version.
 
 - `Bullo_Murray_1995_PD_Control_simple.tex`  
-  A reading-oriented version of the extended report with proofs omitted.
+  A reading-oriented version of the extended Caltech/CDS technical-report with proofs omitted.
 
 - `Bullo_Murray_1995_PD_Control_ECC95.tex`  
   Reconstruction of the shorter two-column ECC'95 conference version.
