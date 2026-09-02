@@ -9,10 +9,10 @@ The reconstruction was created to improve readability, searchability, navigation
 The repository contains several reconstructed versions:
 
 - `Bullo_Murray_1995_PD_Control_full.tex`  
-  Full reconstruction of the extended Caltech/CDS technical-report version.
+  Full reconstruction of the technical-report version.
 
 - `Bullo_Murray_1995_PD_Control_simple.tex`  
-  A reading-oriented version of the extended report with proofs omitted.
+  A reading-oriented version of the technical-report version with proofs omitted.
 
 - `Bullo_Murray_1995_PD_Control_ECC95.tex`  
   Reconstruction of the shorter two-column ECC'95 conference version.
@@ -20,53 +20,21 @@ The repository contains several reconstructed versions:
 - `figures/`  
   Figure files prepared from the original paper and reused by the reconstructed LaTeX sources.
 
-The LaTeX sources include internal hyperlinks for equations, figures, theorems, lemmas, sections, and references where appropriate.
-
 ## Compilation
 
 The recommended compilation method is `latexmk`.
 
-For the full version:
+For each `tex` files:
 
 ```bash
-latexmk -pdf Bullo_Murray_1995_PD_Control_full.tex
-```
-
-For the simplified version:
-
-```bash
-latexmk -pdf Bullo_Murray_1995_PD_Control_simple.tex
-```
-
-For the ECC'95 version:
-
-```bash
-latexmk -pdf Bullo_Murray_1995_PD_Control_ECC95.tex
+latexmk -pdf xxx.tex
 ```
 
 A standard `pdflatex` workflow also works:
 
 ```bash
-pdflatex Bullo_Murray_1995_PD_Control_full.tex
-pdflatex Bullo_Murray_1995_PD_Control_full.tex
-```
-
-Two passes resolve the table of contents and internal cross-references.
-
-The bibliography is included directly in the LaTeX source through `thebibliography`, so the current reconstruction can be compiled without an external `.bib` file.
-
-### VS Code / LaTeX Workshop
-
-With LaTeX Workshop, the recommended recipe is:
-
-```text
-LaTeXmk
-```
-
-or equivalently:
-
-```text
-PDFLaTeX -> PDFLaTeX
+pdflatex xx.tex
+pdflatex xx.tex
 ```
 
 ## Citation
@@ -75,14 +43,7 @@ When using this repository for research or study, please cite the original work 
 
 Two versions of the work are represented in this repository.
 
-### Full technical-report version
-
-F. Bullo and R. M. Murray,  
-*Proportional Derivative (PD) Control on the Euclidean Group*,  
-Technical Report Caltech/CDS 95-010,  
-California Institute of Technology, 1995.
-
-The 47-page source PDF used for the full reconstruction is dated August 11, 1995.
+### Technical-report version
 
 ```bibtex
 @techreport{BulloMurray1995PDTechReport,
@@ -97,11 +58,6 @@ The 47-page source PDF used for the full reconstruction is dated August 11, 1995
 
 ### ECC'95 conference version
 
-F. Bullo and R. M. Murray,  
-“Proportional derivative (PD) control on the Euclidean group,”  
-in *European Control Conference*,  
-Rome, Italy, pp. 1091–1097, 1995.
-
 ```bibtex
 @inproceedings{BulloMurray1995PDECC,
   author    = {Francesco Bullo and Richard M. Murray},
@@ -113,8 +69,6 @@ Rome, Italy, pp. 1091–1097, 1995.
 }
 ```
 
-The ECC'95 paper is the shorter conference version, while the technical report contains the extended treatment.
-
 ## Reconstruction Notes
 
 The LaTeX source was reconstructed from available PDF versions of the paper.
@@ -125,11 +79,9 @@ A small number of clear typographical or mathematical issues identified during c
 
 ## Mathematical and Notational Corrections
 
-The reconstruction is intended to remain close to the printed sources. The following changes are intentional corrections to formulas, symbols, or mathematically significant terminology that were explicitly checked during reconstruction. Algebraically equivalent rewrites, ordinary typesetting differences, and hyperlink/cross-reference changes are not listed here.
+### Technical-report version
 
-### Extended technical-report version (47-page source)
-
-The full reconstruction makes one confirmed mathematical correction to the printed 47-page source. The simplified reading version inherits the same correction.
+The full reconstruction makes one confirmed mathematical correction to the technical-report version. The simplified reading version inherits the same correction.
 
 1. **Appendix A: missing factor in the final block expression for $\mathcal{B}_X$.**
 
@@ -157,7 +109,7 @@ A-y^2B=\frac{1-\alpha(y)}{y^2}.
 A(\psi)^{-T}=I_3+\frac{1}{2}\widehat{\psi}+\frac{1-\alpha(\|\psi\|)}{\|\psi\|^2}\widehat{\psi}^{\,2}.
 ```
 
-### ECC'95 conference version (7-page source)
+### ECC'95 conference version
 
 The short conference version contains several formula or notation inconsistencies that are corrected using the internally consistent formulas of the extended report.
 
@@ -261,8 +213,6 @@ e_{\mathrm{hybrid}}=\begin{bmatrix}R_d^TR & p-p_d\\0 & 1\end{bmatrix}.
 6. **Control-theoretic terminology in the $\mathrm{SO}(3)$ second-order discussion.**
 
    The short version says “controllability problem” at the point where the objective is convergence to the identity equilibrium. The reconstruction uses “stabilization problem,” consistent with the theorem statements and the closed-loop objective.
-
-These corrections are editorial decisions in the reconstruction. The original publications remain the authoritative historical sources, and the changes above are documented so that readers can distinguish the reconstructed formulas from the printed versions.
 
 
 ## Disclaimer
