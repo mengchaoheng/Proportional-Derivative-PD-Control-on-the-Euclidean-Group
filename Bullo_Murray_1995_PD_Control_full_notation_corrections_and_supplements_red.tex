@@ -87,12 +87,6 @@ Our approach in this paper is somewhat different. We concentrate on the problems
 The paper is organized as follows. In Section~\ref{sec:systems-lie-groups}, we introduce basic and new results on systems defined on Lie groups. Section~\ref{sec:pd-so3} shows stabilization results for the compact case and in particular for $\SO(3)$. Section~\ref{sec:pd-se3} considers the $\SE(3)$ case, a non-compact, non-semisimple group. Different metrics lead to different control laws. These results are then generalized to the trajectory tracking case in Section~\ref{sec:trajectory-tracking}. In Section~\ref{sec:linear-homogeneous} we deal with underactuated control systems and we show how the algebraic tools developed in the previous sections lead to simple linear and homogeneous approximations for standard systems on the Euclidean group. Section~\ref{sec:summary-conclusions} discusses the results.
 
 \section{Systems on Lie groups}\label{sec:systems-lie-groups}
-\begin{revision}
-\noindent\textbf{Editorial convention for this annotated version.}
-New explanatory material and replacement symbols are shown in red.  The original prose and
-mathematical statements are otherwise retained.  Whenever a wording change is needed to make
-the old and new notation type-consistent, the removed wording is shown in red strikethrough.
-\end{revision}
 We here review the notations and give some algebraic results on Lie groups and on dynamical systems evolving on Lie groups. For a comprehensive introduction in the context of robotics, see \cite[Appendix A]{26}.
 
 \subsection{Basic definitions and results}\label{subsec:basic-definitions}
@@ -348,32 +342,48 @@ Similarly for the spatial velocity
 \end{equation*}
 \proofbox
 
-\del{In the following we will sometime write equation~\eqref{eq:2.14} by introducing the auxiliary operator symbol $\mathcal B_X$.}
+In the following we will sometime write equation~\eqref{eq:2.14} as
+\begin{equation*}
+\dot X=\textcolor{red}{\JopR^{-1}(X)}V^b,
+\end{equation*}
+where
+\begin{equation*}
+\textcolor{red}{\JopR^{-1}(X)}
+=
+\sum_{n=0}^{\infty}
+\frac{(-1)^nB_n}{n!}\ad_X^n.
+\end{equation*}
+
 \begin{revision}
-For traceability, the original auxiliary notation was
-\begin{center}
-\sout{\(\dot X=\mathcal B_XV^b\)}\hspace{2em}
-\sout{\(\mathcal B_X=\displaystyle\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\ad_X^n\)}.
-\end{center}
-\end{revision}
-\begin{revision}
-In this annotated edition the auxiliary symbol used in the original manuscript for
-the inverse differential is suppressed. Equation~\eqref{eq:2.14} is written simply as
+Thus, $\JopR^{-1}(X):\gfrak\to\gfrak$ is the inverse right-Jacobian
+operator associated with the exponential map.  After choosing a basis,
+with
 \[
-\dot X=\JopR^{-1}(X)V^b,\qquad
-\JopR^{-1}(X)
-=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\ad_X^n,
+x=X^\vee,\qquad v^b=(V^b)^\vee,
 \]
-or, after choosing a basis,
+its matrix representation is
 \[
 \dot x=\JR^{-1}(x)v^b,\qquad
 \JR^{-1}(x)
-=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\bad_x^n.
+=
+\sum_{n=0}^{\infty}
+\frac{(-1)^nB_n}{n!}\bad_x^n.
 \]
-The spatial counterpart is
+Equivalently,
 \[
-\dot X=\JopL^{-1}(X)V^s,\qquad
-\dot x=\JL^{-1}(x)v^s.
+\JR^{-1}(x)
+=
+\vee\circ\JopR^{-1}(X)\circ\wedge.
+\]
+
+For the spatial velocity, equation~\eqref{eq:2.15} gives the corresponding
+left-Jacobian relations
+\[
+\dot X=\JopL^{-1}(X)V^s,
+\qquad
+\dot x=\JL^{-1}(x)v^s,
+\qquad
+v^s=(V^s)^\vee.
 \]
 \end{revision}
 
