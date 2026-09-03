@@ -7,6 +7,13 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{xcolor}
+\newcommand{\redstarfootnote}[1]{%
+  \textcolor{red}{\textsuperscript{*}}%
+  \begingroup
+  \renewcommand{\thefootnote}{\textcolor{red}{*}}%
+  \footnotetext{\textcolor{red}{#1}}%
+  \endgroup
+}
 \usepackage[normalem]{ulem}
 \newcommand{\rev}[1]{\textcolor{red}{#1}}
 \newcommand{\del}[1]{\textcolor{red}{\sout{#1}}}
@@ -211,7 +218,10 @@ A(\theta)=\frac1\theta\begin{bmatrix}\sin\theta&-(1-\cos\theta)\\1-\cos\theta&\s
 $
 \begin{revision}
 Here the original symbol $A(\theta)$ is also retained.  It is the translational factor in the
-$\SE(2)$ exponential (the quantity denoted $V(\theta)$ in Sol\`a).  It plays the same structural
+$\SE(2)$ exponential
+(the quantity denoted $V(\theta)$ in Sol\`a\redstarfootnote{%
+See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
+Appendix C-B, Eqs.~(156)--(158).}). It plays the same structural
 role as $A(\psi)$ above, while it is not the left Jacobian of $\SO(2)$ itself: $\SO(2)$ is
 one-dimensional and abelian, hence $J_L^{\SO(2)}(\theta)=1$.
 \end{revision}
