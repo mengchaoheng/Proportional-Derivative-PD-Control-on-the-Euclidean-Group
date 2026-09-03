@@ -97,35 +97,25 @@ where we can express the velocity in body ($V^b$) or in spatial frame ($V^s$). S
 \ad_X(Y)=[X,Y]=XY-YX.
 \end{equation*}
 \begin{revision}
-\noindent\textbf{Notation bridge to modern Lie-group robotics conventions.}
-The symbols $\Ad_g:\gfrak\to\gfrak$ and $\ad_X:\gfrak\to\gfrak$ retain their original
-meaning as basis-free linear maps.  After choosing a basis $\mathcal E=(E_1,\ldots,E_n)$ of
-$\gfrak$, write
+Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and let
+$X=x^\wedge$, $Y=y^\wedge$.  The coordinate matrices of the two maps above satisfy
 \[
-X=x^\wedge=\sum_{i=1}^n x_iE_i,\qquad x=X^\vee,
-\]
-and denote the corresponding matrices by
-\[
-\bAd_g:=\vee\circ\Ad_g\circ\wedge,\qquad
-\bad_x:=\vee\circ\ad_{x^\wedge}\circ\wedge.
-\]
-When a coordinate-valued exponential or logarithm is useful, we write
-\[
-\Exp(x):=\exp(x^\wedge),\; \Log(g):=(\log g)^\vee,
+\bAd_g y
+:=\bigl(\Ad_g(Y)\bigr)^\vee
+=\bigl(g\,y^\wedge g^{-1}\bigr)^\vee,
 \]
 \[
-\Log_{\SO(3)}(R):=(\log_{\SO(3)}R)^\vee.
+\bad_x y
+:=\bigl(\ad_X(Y)\bigr)^\vee
+=\bigl[x^\wedge,y^\wedge\bigr]^\vee
+=\bigl(x^\wedge y^\wedge-y^\wedge x^\wedge\bigr)^\vee.
 \]
-The original manuscript's $\exp/\log$ notation is otherwise retained; an occurrence is
-changed to $\Log$ only when the surrounding formula is explicitly coordinate-valued and the
-original $\log$ therefore relies on the implicit hat/vee identification.  For $\SE(3)$ coordinate vectors and their matrix representations, this annotated version
-retains the rotation--translation ordering used in the original manuscript,
+Equivalently,
 \[
-x=X^\vee=\begin{bmatrix}\psi\\q\end{bmatrix},\qquad
-\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix}.
+\bAd_g=\vee\circ\Ad_g\circ\wedge,
+\qquad
+\bad_x=\vee\circ\ad_{x^\wedge}\circ\wedge.
 \]
-Thus the ordered pairs $X=(\widehat\psi,q)$ and $V=(\widehat\omega,v)$, their coordinate
-vectors, and the associated matrix representations all use the same ordering.
 \end{revision}
 
 On $\SE(3)$ and $\se(3)$ we represent a group element $g=(R,p)\in\SO(3)\times\R^3$ and a velocity $V=(\widehat\omega,v)\in\so(3)\times\R^3$ using homogeneous coordinates,
@@ -136,10 +126,27 @@ V=\begin{bmatrix}\widehat\omega&v\\0&0\end{bmatrix},
 \end{equation*}
 where the operator $\widehat{\phantom{x}}:\R^3\to\so(3)$ is defined so that $\widehat{x}y=x\times y$ for all $x,y\in\R^3$.
 \begin{revision}
-With the original rotation--translation coordinate ordering $\nu=V^\vee=[\omega^T\ v^T]^T$, the matrix representations corresponding to the abstract maps above are
+For $Y=(\widehat\eta,u)$, set
 \[
-\bAd_g=\begin{bmatrix}R&0\\\widehat pR&R\end{bmatrix},\qquad
-\bad_\nu=\begin{bmatrix}\widehat\omega&0\\\widehat v&\widehat\omega\end{bmatrix}.
+y=Y^\vee=\begin{bmatrix}\eta\\u\end{bmatrix},
+\qquad
+\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix}.
+\]
+Then
+\[
+\bAd_g=\begin{bmatrix}R&0\\\widehat pR&R\end{bmatrix},
+\qquad
+\bad_\nu=\begin{bmatrix}\widehat\omega&0\\\widehat v&\widehat\omega\end{bmatrix},
+\]
+and their action is
+\[
+(\Ad_gY)^\vee=\bAd_g y
+=\begin{bmatrix}R\eta\\ \widehat pR\eta+Ru\end{bmatrix},
+\]
+\[
+(\ad_VY)^\vee=\bad_\nu y
+=\begin{bmatrix}\widehat\omega\eta\\
+\widehat v\eta+\widehat\omega u\end{bmatrix}.
 \]
 \end{revision}
 
@@ -148,9 +155,8 @@ On $\SE(3)$ and on its proper subgroups the exponential map $\exp:\gfrak\to G$ i
 
 \paperhead{Lemma 1.}{(Exponential Map) Given $\widehat\psi\in\so(3)$ and $X=(\widehat\psi,\rev{q})\in\se(3)$,}{lem:exp-map}
 \begin{revision}
-The short version used $p$ both for the group translation and for this translational
-Lie-algebra coordinate.  The latter is denoted $q$ here, matching the full technical report
-and removing that local ambiguity.
+The translational Lie-algebra coordinate is written as $q$ to distinguish it from
+the group translation $p$.
 \end{revision}
 \begin{align*}
 \exp_{\SO(3)}(\widehat\psi)
@@ -168,20 +174,26 @@ A(\psi)=I+\frac{1-\cos\|\psi\|}{\|\psi\|^2}\widehat\psi
 +\frac{\|\psi\|-\sin\|\psi\|}{\|\psi\|^3}\widehat\psi^2.
 \end{equation*}
 \begin{revision}
-The original symbol $A(\psi)$ is retained.  With the left/right Jacobian convention used
-in this annotated edition, this particular $\SE(3)$ translational exponential factor satisfies
+The translational factor in the $\SE(3)$ exponential is the $\SO(3)$ left Jacobian:
 \[
 A(\psi)=J_L^{\SO(3)}(\psi),\qquad
 A(\psi)^{-T}=J_R^{\SO(3)}(\psi)^{-1}.
 \]
-Sol\`a denotes the same translational factor by $V(\psi)$; that additional symbol is not
-adopted here because $V,V^b,V^s$ already denote velocities in the original manuscript.
 \end{revision}
 
 In an open neighborhood of the origin dense in $G$, we define $X=\log(g)\in\gfrak$ to be the \emph{exponential coordinates} of the group element $g$ and we regard the logarithmic map as a local chart of the manifold $G$.
 \begin{revision}
-Thus $\log(g)\in\gfrak$ denotes the Lie-algebra element exactly as in the original text; when
-its coordinate vector is intended we write $x=\Log(g)=(\log g)^\vee$.
+The corresponding coordinate-valued maps are
+\begin{align*}
+\Exp(x)&:=\exp(x^\wedge),\\
+\Log(g)&:=(\log g)^\vee,\\
+\Log_{\SO(3)}(R)&:=(\log_{\SO(3)}R)^\vee.
+\end{align*}
+Thus, with $X=x^\wedge$,
+\[
+g=\exp(X)=\Exp(x),\qquad
+X=\log(g)\ \Longleftrightarrow\ x=\Log(g).
+\]
 \end{revision}
 
 
@@ -215,25 +227,30 @@ We now want to compute explicit formulas that relate the time derivative of $X(t
 \end{align*}
 where $\{B_n\}$ are the Bernoulli numbers.
 \begin{revision}
-For compatibility with later left/right-Jacobian notation, the two basis-free inverse
-differentials represented by Theorem~\ref{thm:differential-exponential} are denoted
-\[
+Define the basis-free inverse differentials
+\begin{align*}
 \JopR^{-1}(X)
-:=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\ad_X^n,
-\;
+&:=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\ad_X^n,\\
 \JopL^{-1}(X)
-:=\sum_{n=0}^{\infty}\frac{B_n}{n!}\ad_X^n.
-\]
-After choosing a basis,
-\[
-\JR^{-1}(x)=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\bad_x^n,
-\qquad
-\JL^{-1}(x)=\sum_{n=0}^{\infty}\frac{B_n}{n!}\bad_x^n,
-\]
-so the theorem is equivalently
+&:=\sum_{n=0}^{\infty}\frac{B_n}{n!}\ad_X^n.
+\end{align*}
+For $x=X^\vee$ and $u\in\R^n$, their coordinate matrices are characterized by
+\begin{align*}
+\JR^{-1}(x)u
+&:=\bigl(\JopR^{-1}(X)(u^\wedge)\bigr)^\vee,\\
+\JL^{-1}(x)u
+&:=\bigl(\JopL^{-1}(X)(u^\wedge)\bigr)^\vee.
+\end{align*}
+so that
+\begin{align*}
+\JR^{-1}(x)&=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\bad_x^n,\\
+\JL^{-1}(x)&=\sum_{n=0}^{\infty}\frac{B_n}{n!}\bad_x^n.
+\end{align*}
+and
 \[
 \dot x=\JR^{-1}(x)\nu^b=\JL^{-1}(x)\nu^s,
-\qquad \nu^{b,s}:=(V^{b,s})^\vee.
+\qquad
+\nu^{b,s}:=(V^{b,s})^\vee.
 \]
 \end{revision}
 
@@ -245,7 +262,7 @@ In the pure rotation case, summing the series we obtain:
 \end{equation*}
 where $\beta(y)\triangleq\dfrac{y/2}{\tan(y/2)}$ and $\omega=\omega_{\parallel}+\omega_{\perp}$ is the orthogonal decomposition of $\omega$ along $\operatorname{span}\{x\}$ and $\operatorname{span}\{x\}^{\perp}$.
 \begin{revision}
-With $x=\Log(R)$, this is the standard inverse-right-Jacobian relation
+With $x=\Log(R)$, Lemma~\ref{lem:so3-exponential-coordinates} is
 \[
 \dot x=J_R^{\SO(3)}(x)^{-1}\omega.
 \]
@@ -341,7 +358,7 @@ where the inner product is taken in $\so(3)\times\so(3)$ and $\epsilon$ is taken
 The primary example of control problem on a compact Lie group is attitude control of a satellite.
 
 In the literature, various PD control laws based on different parametrization of the manifold $\SO(3)$ have been proposed: Euler angles \cite{11}, Gibb's vectors \cite{12} and unit quaternions \cite{13}. In particular, Wen and Kreutz-Delgado \cite{13} introduce the idea that the ``error measure should correspond to the topology of the error space''. Here we additionally require that the error measure correspond to the (natural) metric of the Riemannian manifold $\SO(3)$. The second order model of a satellite is
-\rev{To avoid collision with the newly introduced Lie Jacobians $J_L,J_R$, the rigid-body inertia tensor, denoted $J$ in the original manuscript, is denoted $\mathbb I$ in this annotated version.}\par
+\rev{To distinguish the rigid-body inertia tensor from the Lie Jacobians $J_L,J_R$, write it as $\mathbb I$.}\par
 \begin{equation*}
 \left\{\begin{aligned}
 \dot g&=g\widehat\omega^b,\\

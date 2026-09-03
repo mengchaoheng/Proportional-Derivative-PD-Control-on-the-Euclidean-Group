@@ -99,34 +99,26 @@ where we can express the velocity in body ($V^b$) or in spatial frame ($V^s$). T
 \Ad_g(Y)=gYg^{-1},\qquad \ad_X(Y)=[X,Y]=XY-YX.
 \end{equation*}
 \begin{revision}
-\noindent\textbf{Notation bridge to modern Lie-group robotics conventions.}
-The symbols $\Ad_g:\gfrak\to\gfrak$ and $\ad_X:\gfrak\to\gfrak$ retain their original
-meaning as basis-free linear maps.  After choosing a basis $\mathcal E=(E_1,\ldots,E_n)$ of
-$\gfrak$, write
+Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and let
+$X=x^\wedge$, $Y=y^\wedge$.  The coordinate matrices of the two maps above are
+characterized by
 \[
-X=x^\wedge=\sum_{i=1}^n x_iE_i,\qquad x=X^\vee,
+\bAd_g y
+:=\bigl(\Ad_g(Y)\bigr)^\vee
+=\bigl(g\,y^\wedge g^{-1}\bigr)^\vee,
 \]
-and denote the corresponding matrices by
 \[
-\bAd_g:=\vee\circ\Ad_g\circ\wedge,\qquad
-\bad_x:=\vee\circ\ad_{x^\wedge}\circ\wedge.
+\bad_x y
+:=\bigl(\ad_X(Y)\bigr)^\vee
+=\bigl[x^\wedge,y^\wedge\bigr]^\vee
+=\bigl(x^\wedge y^\wedge-y^\wedge x^\wedge\bigr)^\vee.
 \]
-When a coordinate-valued exponential or logarithm is useful, we write
+Equivalently,
 \[
-\Exp(x):=\exp(x^\wedge),\qquad \Log(g):=(\log g)^\vee,
+\bAd_g=\vee\circ\Ad_g\circ\wedge,
 \qquad
-\Log_{\SO(3)}(R):=(\log_{\SO(3)}R)^\vee.
+\bad_x=\vee\circ\ad_{x^\wedge}\circ\wedge.
 \]
-The original manuscript's $\exp/\log$ notation is otherwise retained; an occurrence is
-changed to $\Log$ only when the surrounding formula is explicitly coordinate-valued and the
-original $\log$ therefore relies on the implicit hat/vee identification.  For $\SE(3)$ coordinate vectors and their matrix representations, this annotated version
-retains the rotation--translation ordering used in the original manuscript,
-\[
-x=X^\vee=\begin{bmatrix}\psi\\q\end{bmatrix},\qquad
-\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix}.
-\]
-Thus the ordered pairs $X=(\widehat\psi,q)$ and $V=(\widehat\omega,v)$, their coordinate
-vectors, and the associated matrix representations all use the same ordering.
 \end{revision}
 
 On $\SE(3)$ and $\se(3)$ we represent a group element $g=(R,p)\in\SO(3)\times\R^3$ and a velocity $V=(\widehat\omega,v)\in\so(3)\times\R^3$ using homogeneous coordinates,
@@ -140,7 +132,22 @@ where the operator $\widehat{\phantom{x}}:\R^3\to\so(3)$ is defined so that $\wi
 \rev{\bad_\nu}=\begin{bmatrix}\widehat\omega&0\\\widehat v&\widehat\omega\end{bmatrix}.\tag{2.2}\label{eq:2.2}
 \end{equation*}
 \begin{revision}
-Here $\nu=V^\vee=[\omega^T\ v^T]^T$ uses the original rotation--translation ordering; only the notation distinguishing the abstract maps $\Ad_g,\ad_V$ from their matrix representations $\bAd_g,\bad_\nu$ is new.
+For $Y=(\widehat\eta,u)$, set
+\[
+y=Y^\vee=\begin{bmatrix}\eta\\u\end{bmatrix},
+\qquad
+\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix}.
+\]
+Then equation~\eqref{eq:2.2} gives the coordinate actions
+\[
+(\Ad_gY)^\vee=\bAd_g y
+=\begin{bmatrix}R\eta\\ \widehat pR\eta+Ru\end{bmatrix},
+\]
+\[
+(\ad_VY)^\vee=\bad_\nu y
+=\begin{bmatrix}\widehat\omega\eta\\
+\widehat v\eta+\widehat\omega u\end{bmatrix}.
+\]
 \end{revision}
 
 On $\SE(3)$ and its proper subgroups the exponential map $\exp:\gfrak\to G$ is a surjective map and a local diffeomorphism. Standard computations show:
@@ -159,20 +166,28 @@ A(\psi)=I+\left(\frac{1-\cos\|\psi\|}{\|\psi\|}\right)\frac{\widehat\psi}{\|\psi
 +\left(1-\frac{\sin\|\psi\|}{\|\psi\|}\right)\frac{\widehat\psi^2}{\|\psi\|^2}.
 \end{equation*}
 \begin{revision}
-The original symbol $A(\psi)$ is retained.  With the left/right Jacobian convention used
-in this annotated edition, this particular $\SE(3)$ translational exponential factor satisfies
+The translational factor in the $\SE(3)$ exponential is the $\SO(3)$ left Jacobian:
 \[
 A(\psi)=J_L^{\SO(3)}(\psi),\qquad
 A(\psi)^{-T}=J_R^{\SO(3)}(\psi)^{-1}.
 \]
-Sol\`a denotes the same translational factor by $V(\psi)$; that additional symbol is not
-adopted here because $V,V^b,V^s$ already denote velocities in the original manuscript.
+Sol\`a denotes the same factor by $V(\psi)$.
 \end{revision}
 
 Equation~\eqref{eq:2.3} is also known as Rodrigues' formula. In an open neighborhood of the origin dense in $G$, we define $X=\log(g)\in\gfrak$ to be the \emph{exponential coordinates} of the group element $g$ and we regard the logarithmic map as a local chart of the manifold $G$.
 \begin{revision}
-Thus $\log(g)\in\gfrak$ denotes the Lie-algebra element exactly as in the original text; when
-its coordinate vector is intended we write $x=\Log(g)=(\log g)^\vee$.
+The corresponding coordinate-valued maps are
+\[
+\Exp(x):=\exp(x^\wedge),\qquad
+\Log(g):=(\log g)^\vee,
+\qquad
+\Log_{\SO(3)}(R):=(\log_{\SO(3)}R)^\vee.
+\]
+Thus, with $X=x^\wedge$,
+\[
+g=\exp(X)=\Exp(x),\qquad
+X=\log(g)\ \Longleftrightarrow\ x=\Log(g).
+\]
 \end{revision}
 
 
@@ -211,13 +226,12 @@ where$
 A(\theta)=\frac1\theta\begin{bmatrix}\sin\theta&-(1-\cos\theta)\\1-\cos\theta&\sin\theta\end{bmatrix}.
 $
 \begin{revision}
-Here the original symbol $A(\theta)$ is also retained.  It is the translational factor in the
-$\SE(2)$ exponential
+Here $A(\theta)$ is the translational factor in the $\SE(2)$ exponential
 (the quantity denoted $V(\theta)$ in Sol\`a\redstarfootnote{%
 See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
-Appendix C-B, Eqs.~(156)--(158).}). It plays the same structural
-role as $A(\psi)$ above, while it is not the left Jacobian of $\SO(2)$ itself: $\SO(2)$ is
-one-dimensional and abelian, hence $J_L^{\SO(2)}(\theta)=1$.
+Appendix C-B, Eqs.~(156)--(158).}).  It has the same structural role as
+$A(\psi)$ above, but it is not $J_L^{\SO(2)}$: since $\SO(2)$ is one-dimensional
+and abelian, $J_L^{\SO(2)}(\theta)=1$.
 \end{revision}
 
 Let $(R,p)\in\SO(2)\times\R^2$ be such that $\tr(R)\neq-2$. Then $\log_{\SO(2)}(R)=\widehat\theta$, where $\cos\theta=R_{11}$, $\sin\theta=R_{21}$ and $|\theta|<\pi$. Also
@@ -240,25 +254,35 @@ V^b&=\int_0^1 \Ad_{e^{-\lambda X(t)}}(\dot X)\,d\lambda,\tag{2.9}\label{eq:2.9}\
 V^s&=\int_0^1 \Ad_{e^{\lambda X(t)}}(\dot X)\,d\lambda.\tag{2.10}\label{eq:2.10}
 \end{align*}
 \begin{revision}
-The two basis-free differentials in equations~\eqref{eq:2.9}--\eqref{eq:2.10} are denoted
+Define the right- and left-trivialized differentials of the exponential by
 \[
 \JopR(X):=\int_0^1\Ad_{\exp(-\lambda X)}\,d\lambda,
 \qquad
-\JopL(X):=\int_0^1\Ad_{\exp(\lambda X)}\,d\lambda,
+\JopL(X):=\int_0^1\Ad_{\exp(\lambda X)}\,d\lambda.
 \]
-so that
+Then
 \[
-V^b=\JopR(X)\dot X,\qquad V^s=\JopL(X)\dot X.
+V^b=\JopR(X)\dot X,\qquad
+V^s=\JopL(X)\dot X.
 \]
-After choosing a basis, their matrix representations are
+For $x=X^\vee$ and $u\in\R^n$, their coordinate matrices are defined by
 \[
-\JR(x):=\vee\circ\JopR(x^\wedge)\circ\wedge,
+\JR(x)u:=\bigl(\JopR(X)(u^\wedge)\bigr)^\vee,
 \qquad
-\JL(x):=\vee\circ\JopL(x^\wedge)\circ\wedge.
+\JL(x)u:=\bigl(\JopL(X)(u^\wedge)\bigr)^\vee,
 \]
-Thus, with $v^b=(V^b)^\vee$ and $v^s=(V^s)^\vee$,
+or equivalently
 \[
-\dot x=\JR^{-1}(x)v^b=\JL^{-1}(x)v^s.
+\JR(x)=\vee\circ\JopR(x^\wedge)\circ\wedge,
+\qquad
+\JL(x)=\vee\circ\JopL(x^\wedge)\circ\wedge.
+\]
+Hence, with $\nu^{b,s}:=(V^{b,s})^\vee$,
+\[
+\nu^b=\JR(x)\dot x,\qquad
+\nu^s=\JL(x)\dot x,
+\qquad
+\dot x=\JR^{-1}(x)\nu^b=\JL^{-1}(x)\nu^s.
 \]
 \end{revision}
 \emph{Proof.} For all $\lambda\in[0,1]$, define $V_\lambda^b$ as the solution to the algebraic equation
@@ -313,6 +337,13 @@ where $\{B_n\}$ are the Bernoulli numbers.
 \begin{equation*}
 \Ad_{e^{-\lambda X}}=e^{\ad_{-\lambda X}}=\sum_{n=0}^{\infty}\frac{(-1)^n\lambda^n \ad_X^n}{n!},
 \end{equation*}
+\begin{revision}
+In coordinates the same identity is
+\[
+\bAd_{\Exp(-\lambda x)}
+=\exp(-\lambda\bad_x).
+\]
+\end{revision}
 and the simple equalities
 \begin{equation*}
 \int_0^1e^{\lambda u}\,d\lambda=\frac{e^u-1}{u},\qquad
@@ -355,35 +386,27 @@ where
 \end{equation*}
 
 \begin{revision}
-Thus, $\JopR^{-1}(X):\gfrak\to\gfrak$ is the inverse right-Jacobian
-operator associated with the exponential map.  After choosing a basis,
-with
+Applying $\vee$ to the inverse differential gives
 \[
-x=X^\vee,\qquad v^b=(V^b)^\vee,
-\]
-its matrix representation is
-\[
-\dot x=\JR^{-1}(x)v^b,\qquad
+\dot x=\JR^{-1}(x)\nu^b,
+\qquad
 \JR^{-1}(x)
-=
-\sum_{n=0}^{\infty}
-\frac{(-1)^nB_n}{n!}\bad_x^n.
+=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\bad_x^n,
+\qquad
+\nu^b=(V^b)^\vee.
 \]
-Equivalently,
+Equivalently, for $u\in\R^n$,
 \[
-\JR^{-1}(x)
-=
-\vee\circ\JopR^{-1}(X)\circ\wedge.
+\JR^{-1}(x)u
+=\bigl(\JopR^{-1}(x^\wedge)(u^\wedge)\bigr)^\vee.
 \]
-
-For the spatial velocity, equation~\eqref{eq:2.15} gives the corresponding
-left-Jacobian relations
+The spatial relation is
 \[
 \dot X=\JopL^{-1}(X)V^s,
 \qquad
-\dot x=\JL^{-1}(x)v^s,
+\dot x=\JL^{-1}(x)\nu^s,
 \qquad
-v^s=(V^s)^\vee.
+\nu^s=(V^s)^\vee.
 \]
 \end{revision}
 
@@ -427,11 +450,10 @@ where $\alpha(y)\triangleq(y/2)\cot(y/2)$ and $\omega=\omega_{\parallel}+\omega_
 
 \paperremark{}{rem:so3-derivative} To the authors' knowledge this expression is novel and relates the time derivative of the angle-axis quantity $\psi$ with the body angular velocity $\omega$. In a very peculiar way, it happens to hold that $\dot\psi=A(\psi)^{-T}\omega$ with $A(\psi)^{-1}$ defined in \eqref{eq:2.5}.
 \begin{revision}
-Using the identification noted above, the same statement is simply
+Equation~\eqref{eq:2.20} is equivalently
 \[
-\dot\psi=J_R^{\SO(3)}(\psi)^{-1}\omega,
+\dot\psi=J_R^{\SO(3)}(\psi)^{-1}\omega.
 \]
-while the original $A(\psi)^{-T}$ notation is retained in the manuscript formulas.
 \end{revision}
 
 \emph{Proof.} Identifying $\so(3)$ with $\R^3$, it holds
@@ -478,7 +500,8 @@ We also have corresponding expressions for the $\SE(3)$ and $\SE(2)$ cases:
 &=\left(\id+\frac12\ad_X+\rev{\gamma_2(\|\psi\|)}\ad_X^2+\rev{\gamma_4(\|\psi\|)}\ad_X^4\right)(V^b),
 \end{align*}
 \begin{revision}
-To avoid overloading the already defined matrix function $A(\psi)$, the scalar functions denoted $A(y),B(y)$ in the original manuscript are written here as $\gamma_2(y),\gamma_4(y)$.
+To distinguish these scalar coefficients from the matrix function $A(\psi)$, write
+$\gamma_2(y),\gamma_4(y)$ for the original scalar functions $A(y),B(y)$.
 \end{revision}
 where
 \begin{align*}
@@ -491,12 +514,19 @@ and $\alpha(y)=(y/2)\cot(y/2)$, $\beta(y)\triangleq(y/2)^2/\sin^2(y/2)$. \del{Ad
 =\begin{bmatrix}J_R^{\SO(3)}(\psi)^{-1}&0\\\star&J_R^{\SO(3)}(\psi)^{-1}\end{bmatrix}.}\tag{2.21}\label{eq:2.21}
 \end{equation*}
 \begin{revision}
-This is the same $\SE(3)$ Jacobian coupling that appears as the $Q_R$ block in modern references.  With the present rotation--translation ordering one may write
+In modern $\SE(3)$ Jacobian notation this coupling is the $Q_R$ block.  With the
+rotation--translation ordering $x=[\psi^T\ q^T]^T$,
 \[
-J_R^{\SE(3)}(x)=\begin{bmatrix}J_R^{\SO(3)}(\psi)&0\\Q_R(q,\psi)&J_R^{\SO(3)}(\psi)\end{bmatrix},
+J_R^{\SE(3)}(x)
+=\begin{bmatrix}
+J_R^{\SO(3)}(\psi)&0\\
+Q_R(q,\psi)&J_R^{\SO(3)}(\psi)
+\end{bmatrix},
 \]
 so the lower-left block of $J_R^{\SE(3)}(x)^{-1}$ is
-$-J_R^{\SO(3)}(\psi)^{-1}Q_R(q,\psi)J_R^{\SO(3)}(\psi)^{-1}$.
+\[
+-J_R^{\SO(3)}(\psi)^{-1}Q_R(q,\psi)J_R^{\SO(3)}(\psi)^{-1}.
+\]
 \end{revision}
 \emph{Proof.} Consider the expression of $\ad_X$ in equation~\eqref{eq:2.2}. If $X=(\widehat\psi,q)\in\se(3)$, then simple algebraic computations show that
 \begin{equation*}
@@ -648,7 +678,7 @@ Notice that the proof follows the same steps as the usual one in $\R^n$. The int
 \paperremark{}{rem:body-spatial-control} We have written the control law \eqref{eq:3.1} and Theorem~\ref{thm:pd-so3} in terms of the body velocity $V^b$, i.e. we assumed ``body-fixed'' control inputs. A dual version can be easily written for the opposite case of ``spatial-fixed'' control inputs, i.e. for the case $\dot V^s=f(g,V^s)+U$. Thanks to Theorem~\ref{thm:distance-derivative} a logarithmic control law is the correct choice also for this case.
 
 \paperexample{ (Orientation control of a satellite)}{ex:satellite-orientation} A standard example of a control problem on a compact Lie group is attitude control of a satellite. In the literature, various PD control laws based on different parametrization of the manifold $\SO(3)$ have been proposed: Euler angles \cite{30}, Gibb's vectors \cite{31} and unit quaternions \cite{34}. In particular, Wen and Kreutz-Delgado \cite{34} introduce the idea that the ``error measure should correspond to the topology of the error space''. Here we additionally require that the error measure correspond to the (natural) metric of the Riemannian manifold $\SO(3)$. The second order model of a satellite is
-\rev{To avoid collision with the newly introduced Lie Jacobians $J_L,J_R$, the rigid-body inertia tensor, denoted $J$ in the original manuscript, is denoted $\mathbb I$ in this annotated version.}\par
+\rev{To distinguish the rigid-body inertia tensor from the Lie Jacobians $J_L,J_R$, write it as $\mathbb I$.}\par
 \begin{equation*}
 \begin{cases}
 \dot g=g\widehat\omega^b,\\
@@ -703,7 +733,14 @@ The two procedures are illustrated in Figure~\ref{fig:proportional-actions-se2} 
 \rev{\nu^b=-\begin{bmatrix}k_\omega I_3&0\\0&(k_\omega+k_v)I_3\end{bmatrix}\Log(g),\qquad V^b=(\nu^b)^\wedge}\tag{4.2}\label{eq:4.2}
 \end{equation*}
 \begin{revision}
-Equation~\eqref{eq:4.2} is one of the places where the original manuscript implicitly identifies $\se(3)$ with $\mathbb R^6$: the displayed block gain acts on coordinates. The annotated equation therefore uses $\Log(g)$ explicitly while retaining the manuscript's rotation--translation ordering $\nu=[\omega^T\ v^T]^T$.
+Since the block gain in~\eqref{eq:4.2} acts on $\R^6$ coordinates, use
+\[
+\Log(g)=(\log g)^\vee
+=\begin{bmatrix}\psi\\q\end{bmatrix},
+\qquad
+\nu^b=(V^b)^\vee
+=\begin{bmatrix}\omega^b\\v^b\end{bmatrix}.
+\]
 \end{revision}
 \emph{exponentially stabilizes the state $g$ at $I$ with time constant $k_p$, from any initial condition $g(0)=(R(0),p(0))$ such that $\tr(R(0))\neq-1$.}
 
@@ -1421,7 +1458,8 @@ Plugging this result in the definition of $\rev{\JopR^{-1}(X)}$, we have
 &=\id+\frac12\ad_X+\rev{\gamma_2}\ad_X^2+\rev{\gamma_4}\ad_X^4,\tag{A.2}\label{eq:A.2}
 \end{align*}
 \begin{revision}
-The scalar coefficients denoted $A,B$ in the original appendix are written as $\gamma_2,\gamma_4$ here, matching the renaming in Lemma~\ref{lem:se3-exp-coordinate-derivative} and avoiding collision with the matrix function $A(\psi)$.
+Here $\gamma_2,\gamma_4$ denote the same scalar coefficients as in
+Lemma~\ref{lem:se3-exp-coordinate-derivative}.
 \end{revision}
 where
 \begin{align*}

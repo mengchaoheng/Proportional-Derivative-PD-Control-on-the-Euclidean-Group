@@ -20,7 +20,7 @@ The repository contains several reconstructed versions:
 - `figures/`  
   Figure files prepared from the original paper and reused by the reconstructed LaTeX sources.
 
-- `xx_notation_corrections_and_supplements_red.tex`
+- `xx_notation_corrections_and_supplements.tex`
    The annotated version.
    New explanatory material and replacement symbols are shown in red.  The original prose and
    mathematical statements are otherwise retained.  Whenever a wording change is needed to make
