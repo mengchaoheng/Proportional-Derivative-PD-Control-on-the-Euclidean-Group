@@ -268,38 +268,6 @@ We now want to compute explicit formulas that relate the time derivative of $X(t
 V^b&=\int_0^1 \Ad_{e^{-\lambda X(t)}}(\dot X)\,d\lambda,\tag{2.9}\label{eq:2.9}\\
 V^s&=\int_0^1 \Ad_{e^{\lambda X(t)}}(\dot X)\,d\lambda.\tag{2.10}\label{eq:2.10}
 \end{align*}
-\begin{revision}
-Define the right- and left-trivialized differentials of the exponential by
-\[
-\JopR(X):=\int_0^1\Ad_{\exp(-\lambda X)}\,d\lambda,
-\qquad
-\JopL(X):=\int_0^1\Ad_{\exp(\lambda X)}\,d\lambda.
-\]
-Then
-\[
-V^b=\JopR(X)\dot X,\qquad
-V^s=\JopL(X)\dot X.
-\]
-For $x=X^\vee$ and $u\in\R^n$, their coordinate matrices are defined by
-\[
-\JR(x)u:=\bigl(\JopR(X)(u^\wedge)\bigr)^\vee,
-\qquad
-\JL(x)u:=\bigl(\JopL(X)(u^\wedge)\bigr)^\vee,
-\]
-or equivalently
-\[
-\JR(x)=\vee\circ\JopR(x^\wedge)\circ\wedge,
-\qquad
-\JL(x)=\vee\circ\JopL(x^\wedge)\circ\wedge.
-\]
-Hence, with $\nu^{b,s}:=(V^{b,s})^\vee$,
-\[
-\nu^b=\JR(x)\dot x,\qquad
-\nu^s=\JL(x)\dot x,
-\qquad
-\dot x=\JR^{-1}(x)\nu^b=\JL^{-1}(x)\nu^s.
-\]
-\end{revision}
 \emph{Proof.} For all $\lambda\in[0,1]$, define $V_\lambda^b$ as the solution to the algebraic equation
 \begin{equation*}
 \frac{d}{dt}e^{\lambda X(t)}=e^{\lambda X(t)}[\lambda V_\lambda^b].\tag{2.11}\label{eq:2.11}
@@ -401,28 +369,34 @@ where
 \end{equation*}
 
 \begin{revision}
-Applying $\vee$ to the inverse differential gives
+Together with equations~\eqref{eq:2.9}, \eqref{eq:2.10}, and \eqref{eq:2.15}, the corresponding left/right relations are
 \[
-\dot x=\JR^{-1}(x)\nu^b,
-\qquad
-\JR^{-1}(x)
-=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\bad_x^n,
-\qquad
-\nu^b=(V^b)^\vee.
+V^b=\JopR(X)\dot X,\qquad
+V^s=\JopL(X)\dot X,\qquad
+\dot X=\JopR^{-1}(X)V^b=\JopL^{-1}(X)V^s,
 \]
-Equivalently, for $u\in\R^n$,
+where
 \[
-\JR^{-1}(x)u
-=\bigl(\JopR^{-1}(x^\wedge)(u^\wedge)\bigr)^\vee.
+\JopR(X):=\int_0^1\Ad_{\exp(-\lambda X)}\,d\lambda,\qquad
+\JopL(X):=\int_0^1\Ad_{\exp(\lambda X)}\,d\lambda,
 \]
-The spatial relation is
+and
 \[
-\dot X=\JopL^{-1}(X)V^s,
-\qquad
-\dot x=\JL^{-1}(x)\nu^s,
-\qquad
-\nu^s=(V^s)^\vee.
+\JopL^{-1}(X)
+=\sum_{n=0}^{\infty}\frac{B_n}{n!}\ad_X^n.
 \]
+After choosing a basis, with $x=X^\vee$ and $\nu^{b,s}=(V^{b,s})^\vee$,
+\[
+\nu^b=\JR(x)\dot x,\qquad
+\nu^s=\JL(x)\dot x,\qquad
+\dot x=\JR^{-1}(x)\nu^b=\JL^{-1}(x)\nu^s,
+\]
+with
+\[
+\JR(x)=\vee\circ\JopR(x^\wedge)\circ\wedge,\qquad
+\JL(x)=\vee\circ\JopL(x^\wedge)\circ\wedge,
+\]
+and similarly for their inverses.
 \end{revision}
 
 Recalling that $B_{2k+1}=0$ for all $k>0$, the two series \eqref{eq:2.14} and \eqref{eq:2.15} differ only in the second addend:
