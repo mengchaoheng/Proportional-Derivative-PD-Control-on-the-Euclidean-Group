@@ -20,10 +20,10 @@
 \newenvironment{revision}{\color{red}}{}
 \newcommand{\bAd}{\mathbf{Ad}}
 \newcommand{\bad}{\mathbf{ad}}
-\newcommand{\JopL}{\mathcal J_L}
-\newcommand{\JopR}{\mathcal J_R}
-\newcommand{\JL}{J_L}
-\newcommand{\JR}{J_R}
+\newcommand{\JopL}{\mathcal J_l}
+\newcommand{\JopR}{\mathcal J_r}
+\newcommand{\JL}{J_l}
+\newcommand{\JR}{J_r}
 \newcommand{\Exp}{\operatorname{Exp}}
 \newcommand{\Log}{\operatorname{Log}}
 \setlength{\parindent}{1.5em}
@@ -183,8 +183,8 @@ A(\psi)=I+\left(\frac{1-\cos\|\psi\|}{\|\psi\|}\right)\frac{\widehat\psi}{\|\psi
 \begin{revision}
 The translational factor in the $\SE(3)$ exponential is the $\SO(3)$ left Jacobian:
 \[
-A(\psi)=J_L^{\SO(3)}(\psi),\qquad
-A(\psi)^{-T}=J_R^{\SO(3)}(\psi)^{-1}.
+A(\psi)=J_l^{\SO(3)}(\psi),\qquad
+A(\psi)^{-T}=J_r^{\SO(3)}(\psi)^{-1}.
 \]
 Sol\`a\redstarfootnote{%
 See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
@@ -247,8 +247,8 @@ Here $A(\theta)$ is the translational factor in the $\SE(2)$ exponential
 (the quantity denoted $V(\theta)$ in Sol\`a\redstarfootnote{%
 See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
 Appendix C-B, Eqs.~(156)--(158).}).  It has the same structural role as
-$A(\psi)$ above, but it is not $J_L^{\SO(2)}$: since $\SO(2)$ is one-dimensional
-and abelian, $J_L^{\SO(2)}(\theta)=1$.
+$A(\psi)$ above, but it is not $J_l^{\SO(2)}$: since $\SO(2)$ is one-dimensional
+and abelian, $J_l^{\SO(2)}(\theta)=1$.
 \end{revision}
 
 Let $(R,p)\in\SO(2)\times\R^2$ be such that $\tr(R)\neq-2$. Then $\log_{\SO(2)}(R)=\widehat\theta$, where $\cos\theta=R_{11}$, $\sin\theta=R_{21}$ and $|\theta|<\pi$. Also
@@ -398,7 +398,9 @@ with
 \JR(x)=\vee\circ\JopR(x^\wedge)\circ\wedge,\qquad
 \JL(x)=\vee\circ\JopL(x^\wedge)\circ\wedge,
 \]
-and similarly for their inverses.
+and similarly for their inverses. Following the terminology of Sol\`a\redstarfootnote{%
+See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
+Sec.~III-B3, Eqs.~(67)--(74).}, $\JR(x)$ and $\JL(x)$ are the \emph{right} and \emph{left Jacobians of the exponential map}, respectively; $\JR^{-1}(x)$ and $\JL^{-1}(x)$ are their inverse Jacobians.
 \end{revision}
 
 Recalling that $B_{2k+1}=0$ for all $k>0$, the two series \eqref{eq:2.14} and \eqref{eq:2.15} differ only in the second addend:
@@ -443,7 +445,7 @@ where $\alpha(y)\triangleq(y/2)\cot(y/2)$ and $\omega=\omega_{\parallel}+\omega_
 \begin{revision}
 Equation~\eqref{eq:2.20} is equivalently
 \[
-\dot\psi=J_R^{\SO(3)}(\psi)^{-1}\omega.
+\dot\psi=J_r^{\SO(3)}(\psi)^{-1}\omega.
 \]
 \end{revision}
 
@@ -502,21 +504,21 @@ y^4\rev{\gamma_4(y)}&=[1-\alpha(y)]+\frac12[\alpha(y)-\beta(y)],
 and $\alpha(y)=(y/2)\cot(y/2)$, $\beta(y)\triangleq(y/2)^2/\sin^2(y/2)$. \del{Additionally the operator $\mathcal B_X$ can be written as} \rev{Additionally, for the coordinate vector $x=X^\vee=[\psi^T\ q^T]^T$ in the original rotation--translation order, the matrix representation of $\JopR^{-1}(X)$ is}
 \begin{equation*}
 \rev{\JR^{-1}(x)=\begin{bmatrix}A(\psi)^{-T}&0\\\star&A(\psi)^{-T}\end{bmatrix}
-=\begin{bmatrix}J_R^{\SO(3)}(\psi)^{-1}&0\\\star&J_R^{\SO(3)}(\psi)^{-1}\end{bmatrix}.}\tag{2.21}\label{eq:2.21}
+=\begin{bmatrix}J_r^{\SO(3)}(\psi)^{-1}&0\\\star&J_r^{\SO(3)}(\psi)^{-1}\end{bmatrix}.}\tag{2.21}\label{eq:2.21}
 \end{equation*}
 \begin{revision}
-In modern $\SE(3)$ Jacobian notation this coupling is the $Q_R$ block.  With the
+In modern $\SE(3)$ Jacobian notation this coupling is the $Q_r$ block.  With the
 rotation--translation ordering $x=[\psi^T\ q^T]^T$,
 \[
-J_R^{\SE(3)}(x)
+J_r^{\SE(3)}(x)
 =\begin{bmatrix}
-J_R^{\SO(3)}(\psi)&0\\
-Q_R(q,\psi)&J_R^{\SO(3)}(\psi)
+J_r^{\SO(3)}(\psi)&0\\
+Q_r(q,\psi)&J_r^{\SO(3)}(\psi)
 \end{bmatrix},
 \]
-so the lower-left block of $J_R^{\SE(3)}(x)^{-1}$ is
+so the lower-left block of $J_r^{\SE(3)}(x)^{-1}$ is
 \[
--J_R^{\SO(3)}(\psi)^{-1}Q_R(q,\psi)J_R^{\SO(3)}(\psi)^{-1}.
+-J_r^{\SO(3)}(\psi)^{-1}Q_r(q,\psi)J_r^{\SO(3)}(\psi)^{-1}.
 \]
 \end{revision}
 \emph{Proof.} Consider the expression of $\ad_X$ in equation~\eqref{eq:2.2}. If $X=(\widehat\psi,q)\in\se(3)$, then simple algebraic computations show that
@@ -677,7 +679,7 @@ Notice that the proof follows the same steps as the usual one in $\R^n$. The int
 \paperremark{}{rem:body-spatial-control} We have written the control law \eqref{eq:3.1} and Theorem~\ref{thm:pd-so3} in terms of the body velocity $V^b$, i.e. we assumed ``body-fixed'' control inputs. A dual version can be easily written for the opposite case of ``spatial-fixed'' control inputs, i.e. for the case $\dot V^s=f(g,V^s)+U$. Thanks to Theorem~\ref{thm:distance-derivative} a logarithmic control law is the correct choice also for this case.
 
 \paperexample{ (Orientation control of a satellite)}{ex:satellite-orientation} A standard example of a control problem on a compact Lie group is attitude control of a satellite. In the literature, various PD control laws based on different parametrization of the manifold $\SO(3)$ have been proposed: Euler angles \cite{30}, Gibb's vectors \cite{31} and unit quaternions \cite{34}. In particular, Wen and Kreutz-Delgado \cite{34} introduce the idea that the ``error measure should correspond to the topology of the error space''. Here we additionally require that the error measure correspond to the (natural) metric of the Riemannian manifold $\SO(3)$. The second order model of a satellite is
-\rev{To distinguish the rigid-body inertia tensor from the Lie Jacobians $J_L,J_R$, write it as $\mathbb I$.}\par
+\rev{To distinguish the rigid-body inertia tensor from the Lie Jacobians $J_l,J_r$, write it as $\mathbb I$.}\par
 \begin{equation*}
 \begin{cases}
 \dot g=g\widehat\omega^b,\\
@@ -1525,7 +1527,7 @@ I_3+\frac12\widehat\psi+(1-\alpha(\|\psi\|))\dfrac{\widehat\psi^2}{\|\psi\|^2}&0
 *&I_3+\frac12\widehat\psi+(1-\alpha(\|\psi\|))\dfrac{\widehat\psi^2}{\|\psi\|^2}
 \end{bmatrix}}.
 \end{align*}
-\del{Now it is enough to note that the $(1,1)$ and the $(2,2)$ blocks are equal and that the $(1,1)$ block is exactly the $\mathcal B_{\widehat\psi}$ operator on $\SO(3)$.} \rev{In the original rotation--translation matrix ordering, the two diagonal blocks are equal to the $\SO(3)$ inverse right Jacobian $J_R^{\SO(3)}(\psi)^{-1}=A(\psi)^{-T}$.} From Lemma~\ref{lem:so3-exp-coordinate-derivative} we have
+\del{Now it is enough to note that the $(1,1)$ and the $(2,2)$ blocks are equal and that the $(1,1)$ block is exactly the $\mathcal B_{\widehat\psi}$ operator on $\SO(3)$.} \rev{In the original rotation--translation matrix ordering, the two diagonal blocks are equal to the $\SO(3)$ inverse right Jacobian $J_r^{\SO(3)}(\psi)^{-1}=A(\psi)^{-T}$.} From Lemma~\ref{lem:so3-exp-coordinate-derivative} we have
 \begin{equation*}
 \rev{\JR^{-1}(x)=\begin{bmatrix}A(\psi)^{-T}&0\\ *&A(\psi)^{-T}\end{bmatrix}}.
 \end{equation*}

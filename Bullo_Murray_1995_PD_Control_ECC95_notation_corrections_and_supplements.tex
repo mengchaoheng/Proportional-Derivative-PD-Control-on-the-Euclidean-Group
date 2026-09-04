@@ -5,16 +5,23 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{xcolor}
+\newcommand{\redstarfootnote}[1]{%
+  \textcolor{red}{\textsuperscript{*}}%
+  \begingroup
+  \renewcommand{\thefootnote}{\textcolor{red}{*}}%
+  \footnotetext{\textcolor{red}{#1}}%
+  \endgroup
+}
 \usepackage[normalem]{ulem}
 \newcommand{\rev}[1]{\textcolor{red}{#1}}
 \newcommand{\del}[1]{\textcolor{red}{\sout{#1}}}
 \newenvironment{revision}{\color{red}}{}
 \newcommand{\bAd}{\mathbf{Ad}}
 \newcommand{\bad}{\mathbf{ad}}
-\newcommand{\JopL}{\mathcal J_L}
-\newcommand{\JopR}{\mathcal J_R}
-\newcommand{\JL}{J_L}
-\newcommand{\JR}{J_R}
+\newcommand{\JopL}{\mathcal J_l}
+\newcommand{\JopR}{\mathcal J_r}
+\newcommand{\JL}{J_l}
+\newcommand{\JR}{J_r}
 \newcommand{\Exp}{\operatorname{Exp}}
 \newcommand{\Log}{\operatorname{Log}}
 \usepackage[hidelinks]{hyperref}
@@ -193,8 +200,8 @@ A(\psi)=I+\frac{1-\cos\|\psi\|}{\|\psi\|^2}\widehat\psi
 \begin{revision}
 The translational factor in the $\SE(3)$ exponential is the $\SO(3)$ left Jacobian:
 \[
-A(\psi)=J_L^{\SO(3)}(\psi),\qquad
-A(\psi)^{-T}=J_R^{\SO(3)}(\psi)^{-1}.
+A(\psi)=J_l^{\SO(3)}(\psi),\qquad
+A(\psi)^{-T}=J_r^{\SO(3)}(\psi)^{-1}.
 \]
 \end{revision}
 
@@ -244,26 +251,21 @@ We now want to compute explicit formulas that relate the time derivative of $X(t
 \end{align*}
 where $\{B_n\}$ are the Bernoulli numbers.
 \begin{revision}
-Define the basis-free inverse differentials
+The two series in Theorem~\ref{thm:differential-exponential} are the basis-free inverse right and left differentials of the exponential map:
 \begin{align*}
 \JopR^{-1}(X)
 &:=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\ad_X^n,\\
 \JopL^{-1}(X)
 &:=\sum_{n=0}^{\infty}\frac{B_n}{n!}\ad_X^n.
 \end{align*}
-For $x=X^\vee$ and $u\in\R^n$, their coordinate matrices are characterized by
-\begin{align*}
-\JR^{-1}(x)u
-&:=\bigl(\JopR^{-1}(X)(u^\wedge)\bigr)^\vee,\\
-\JL^{-1}(x)u
-&:=\bigl(\JopL^{-1}(X)(u^\wedge)\bigr)^\vee.
-\end{align*}
-so that
+After choosing a basis, with $x=X^\vee$, their matrix representations are
 \begin{align*}
 \JR^{-1}(x)&=\sum_{n=0}^{\infty}\frac{(-1)^nB_n}{n!}\bad_x^n,\\
 \JL^{-1}(x)&=\sum_{n=0}^{\infty}\frac{B_n}{n!}\bad_x^n.
 \end{align*}
-and
+In the terminology used by Sol\`a et al.\redstarfootnote{%
+See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
+Sec.~III-B3, Eqs.~(67)--(74).}, these are the inverse right and inverse left Jacobians of the exponential map; their inverses are denoted $J_r(x)$ and $J_l(x)$, respectively. Thus the theorem is equivalently
 \[
 \dot x=\JR^{-1}(x)\nu^b=\JL^{-1}(x)\nu^s,
 \qquad
@@ -281,7 +283,7 @@ where $\beta(y)\triangleq\dfrac{y/2}{\tan(y/2)}$ and $\omega=\omega_{\parallel}+
 \begin{revision}
 With $x=\Log(R)$, Lemma~\ref{lem:so3-exponential-coordinates} is
 \[
-\dot x=J_R^{\SO(3)}(x)^{-1}\omega.
+\dot x=J_r^{\SO(3)}(x)^{-1}\omega.
 \]
 \end{revision}
 
@@ -384,7 +386,7 @@ where the inner product is taken in $\so(3)\times\so(3)$ and $\epsilon$ is taken
 The primary example of control problem on a compact Lie group is attitude control of a satellite.
 
 In the literature, various PD control laws based on different parametrization of the manifold $\SO(3)$ have been proposed: Euler angles \cite{11}, Gibb's vectors \cite{12} and unit quaternions \cite{13}. In particular, Wen and Kreutz-Delgado \cite{13} introduce the idea that the ``error measure should correspond to the topology of the error space''. Here we additionally require that the error measure correspond to the (natural) metric of the Riemannian manifold $\SO(3)$. The second order model of a satellite is
-\rev{To distinguish the rigid-body inertia tensor from the Lie Jacobians $J_L,J_R$, write it as $\mathbb I$.}\par
+\rev{To distinguish the rigid-body inertia tensor from the Lie Jacobians $J_l,J_r$, write it as $\mathbb I$.}\par
 \begin{equation*}
 \left\{\begin{aligned}
 \dot g&=g\widehat\omega^b,\\
