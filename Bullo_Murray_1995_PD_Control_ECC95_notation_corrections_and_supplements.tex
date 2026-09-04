@@ -290,8 +290,17 @@ To the authors' knowledge this expression is novel and relates the time derivati
 \subsection{Metric properties on compact Lie groups}\label{subsec:metric-compact}
 On any Lie group $G$, the Killing form $\langle\cdot,\cdot\rangle_K$ is defined as the bilinear operator on $\gfrak\times\gfrak$:
 \begin{equation*}
-\langle X,Y\rangle_K\triangleq\tr(\ad_X\cdot\ad_Y),\qquad \forall X,Y\in\gfrak.
+\langle X,Y\rangle_K\triangleq\tr(\ad_X\rev{\circ}\ad_Y),\qquad \forall X,Y\in\gfrak.
 \end{equation*}
+\begin{revision}
+Here $\ad_X,\ad_Y:\gfrak\to\gfrak$ are linear maps, and $\circ$ denotes their composition:
+\[
+(\ad_X\circ\ad_Y)(Z)=[X,[Y,Z]],\qquad Z\in\gfrak.
+\]
+Thus the trace is taken over the linear operator $\ad_X\circ\ad_Y:\gfrak\to\gfrak$.
+After choosing a basis, with $x=X^\vee$ and $y=Y^\vee$, the corresponding matrix expression is $\langle X,Y\rangle_K = \tr(\bad_x\,\bad_y)$, where the product is ordinary matrix multiplication.
+\end{revision}
+
 A Lie group is said to be \emph{semi-simple} if $\langle\cdot,\cdot\rangle_K$ is nondegenerate. For \emph{compact} Lie groups $\langle\cdot,\cdot\rangle_K$ is both nondegenerate and negative definite, so that by a simple multiplication with a negative constant, we can define an inner product on the Lie algebra $\gfrak$ (e.g. on $\so(3)$ $\langle\cdot,\cdot\rangle\triangleq-1/4\langle\cdot,\cdot\rangle_K$). An inner product defined this way will satisfy the crucial property of \emph{Ad-invariance}:
 \begin{equation*}
 \langle X,Y\rangle=\langle\Ad_gX,\Ad_gY\rangle,\qquad \forall g\in G,
