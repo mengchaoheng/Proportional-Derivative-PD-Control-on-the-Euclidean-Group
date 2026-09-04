@@ -213,6 +213,7 @@ The corresponding coordinate-valued maps are
 \Log(g)&:=(\log g)^\vee,\\
 \Log_{\SO(3)}(R)&:=(\log_{\SO(3)}R)^\vee.
 \end{align*}
+Accordingly, $\log$ is used for Lie-algebra-valued expressions, whereas $\Log$ is used for their coordinate-vector representations.
 Thus, with $X=x^\wedge$,
 \[
 g=\exp(X)=\Exp(x),\qquad
@@ -404,7 +405,7 @@ f(g,\omega^b)=
 Following early work by Koditschek \cite{14}, we introduce a slight modification to the design of Theorem~\ref{thm:pd-so3} and we adopt the modified Lyapunov function
 \begin{equation*}
 W=\frac{k_p}{2}\|g\|_{\SO(3)}^2+\frac12\langle\omega^b,\rev{\mathbb I}\omega^b\rangle_{\R^3}
-+\epsilon\langle\rev{\Log(g)},\rev{\mathbb I}\omega^b\rangle
++\epsilon\langle\rev{\Log(g)},\rev{\mathbb I}\omega^b\rangle_{\rev{\R^3}}
 \end{equation*}
 where the second term has the strong interpretation of kinetic energy. This leads to the feedback law
 \begin{equation*}
@@ -494,7 +495,7 @@ locally exponentially stabilizes the state $g$ at $I\in\SE(3)$.
 \begin{equation*}
 U(g,V^b)=-f(g,V^b)-
 \begin{bmatrix}
-K_\omega\rev{\Log_{\SO(3)}(R)}\\
+K_\omega\log_{\SO(3)}(R)\\
 R^TK_vp
 \end{bmatrix}-K_dV^b,
 \end{equation*}
@@ -514,7 +515,7 @@ exponentially stabilizes the state $g$ at $I$ from any initial condition $g(0)=(
 \begin{equation*}
 U(g,V^s)=-f(g,V^s)-
 \begin{bmatrix}
-K_\omega\rev{\Log_{\SO(3)}(R)}\\
+K_\omega\log_{\SO(3)}(R)\\
 K_vp
 \end{bmatrix}-K_dV^s.
 \end{equation*}
@@ -531,7 +532,7 @@ where $M(g)$ is the inertia matrix, $C(g,V^b)$ is the Coriolis matrix and $N(g,V
 \begin{equation*}
 U(g,V^b)=-N(g,V^b)-k_p
 \begin{bmatrix}
-\rev{\Log_{\SO(3)}(R)}\\
+\rev{\log_{\SO(3)}(R)}\\
 R^Tp
 \end{bmatrix}-K_dV^b.
 \end{equation*}

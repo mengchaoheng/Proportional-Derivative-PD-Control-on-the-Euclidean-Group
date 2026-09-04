@@ -200,6 +200,7 @@ The corresponding coordinate-valued maps are
 \qquad
 \Log_{\SO(3)}(R):=(\log_{\SO(3)}R)^\vee.
 \]
+Accordingly, $\log$ is used for Lie-algebra-valued expressions, whereas $\Log$ is used for their coordinate-vector representations.
 Thus, with $X=x^\wedge$,
 \[
 g=\exp(X)=\Exp(x),\qquad
@@ -696,7 +697,7 @@ f(g,\omega^b)=
 \end{equation*}
 Following early work by Koditschek \cite{19}, we introduce a slight modification to the design of Theorem~\ref{thm:pd-so3} and we adopt the modified Lyapunov function
 \begin{equation*}
-W=\frac{k_p}{2}\|g\|_{\SO(3)}^2+\frac12\langle\omega^b,\rev{\mathbb I}\omega^b\rangle_{\R^3}+\eps\langle\rev{\Log(g)},\rev{\mathbb I}\omega^b\rangle,
+W=\frac{k_p}{2}\|g\|_{\SO(3)}^2+\frac12\langle\omega^b,\rev{\mathbb I}\omega^b\rangle_{\R^3}+\eps\langle\rev{\Log(g)},\rev{\mathbb I}\omega^b\rangle_{\rev{\R^3}},
 \end{equation*}
 where the second term has the interpretation of kinetic energy. This leads to the feedback law
 \begin{equation*}
@@ -859,7 +860,7 @@ where $f(g,V^b),U\in\se(3)$ are internal drift and control input. The previous d
 
 \papertheorem{Regulation via the double-geodesic law}{thm:double-geodesic-regulation}{Consider the system in equation~\eqref{eq:4.5} and let $K_\omega,K_v$ and $K_d$ be the positive definite gains. Then the control law}
 \begin{equation*}
-U(g,V^b)=-f(g,V^b)-\begin{bmatrix}K_\omega\rev{\Log_{\SO(3)}(R)}\\R^TK_vp\end{bmatrix}-K_dV^b,\tag{4.6}\label{eq:4.6}
+U(g,V^b)=-f(g,V^b)-\begin{bmatrix}K_\omega\log_{\SO(3)}(R)\\R^TK_vp\end{bmatrix}-K_dV^b,\tag{4.6}\label{eq:4.6}
 \end{equation*}
 \emph{exponentially stabilizes the state $g$ at $I$ from any initial condition $g(0)=(R(0),p(0))$ with $\tr(R(0))\neq-1$ and for all $K_\omega$ and $\omega^b(0)$ such that}
 \begin{equation*}
@@ -924,7 +925,7 @@ Additionally, if condition~\eqref{eq:4.9} is satisfied, then with the same bound
 
 \paperremark{}{rem:right-invariant-se3} As usual we can extend to the right invariant case ($\dot g=V^sg$) all we have done for the left one. For both systems the logarithmic control law (in Theorem~\ref{thm:logarithm-regulation}) is identical. The double-geodesic law applied to a right system has the slightly different expression:
 \begin{equation*}
-U(g,V^s)=-f(g,V^s)-\begin{bmatrix}K_\omega\rev{\Log_{\SO(3)}(R)}\\K_vp\end{bmatrix}-K_dV^s.
+U(g,V^s)=-f(g,V^s)-\begin{bmatrix}K_\omega\log_{\SO(3)}(R)\\K_vp\end{bmatrix}-K_dV^s.
 \end{equation*}
 
 \paperexample{ (Workspace control of mechanical systems)}{ex:workspace-control} As in Example~\ref{ex:satellite-orientation} for $\SO(3)$, we here apply our control strategies to fully actuated mechanical systems. Examples of this class of systems are robotic manipulators and 6 degree of freedom (DOF) underwater vehicles. We assume here that a change of coordinates and inputs has already been applied to the system so that our model is described by
@@ -936,7 +937,7 @@ M(g)\dot V^b=-C(g,V^b)V^b-N(g,V^b)+U,
 \end{equation*}
 where $M(g)$ is the inertia matrix, $C(g,V^b)$ is the Coriolis matrix and $N(g,V^b)$ is used to model friction and gravity. The kinetic energy of this mechanical system is computed with the positive definite form \eqref{eq:4.1} (coupled with the left translation of the velocity $gV^b$). Hence, for this class of systems, we are naturally led to prefer the double-geodesic control law over the logarithmic one:
 \begin{equation*}
-U(g,V^b)=N(g,V^b)-\begin{bmatrix}k_\omega\rev{\Log_{\SO(3)}(R)}\\k_vR^Tp\end{bmatrix}-K_dV^b.\tag{4.13}\label{eq:4.13}
+U(g,V^b)=N(g,V^b)-\begin{bmatrix}k_\omega\rev{\log_{\SO(3)}(R)}\\k_vR^Tp\end{bmatrix}-K_dV^b.\tag{4.13}\label{eq:4.13}
 \end{equation*}
 Exponential stability is proved through the Lyapunov function
 \begin{align*}
