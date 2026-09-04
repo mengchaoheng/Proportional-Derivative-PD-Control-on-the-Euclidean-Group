@@ -181,14 +181,17 @@ A(\psi)=I+\left(\frac{1-\cos\|\psi\|}{\|\psi\|}\right)\frac{\widehat\psi}{\|\psi
 +\left(1-\frac{\sin\|\psi\|}{\|\psi\|}\right)\frac{\widehat\psi^2}{\|\psi\|^2}.
 \end{equation*}
 \begin{revision}
-The translational factor in the $\SE(3)$ exponential is the $\SO(3)$ left Jacobian:
+The translational factor in the $\SE(3)$ exponential coincides with the $\SO(3)$ left Jacobian:
 \[
-A(\psi)=J_l^{\SO(3)}(\psi),\qquad
+A(\psi)=J_l^{\SO(3)}(\psi).
+\]
+Since $J_r^{\SO(3)}(\psi)=J_l^{\SO(3)}(\psi)^T$, it follows that
+\[
 A(\psi)^{-T}=J_r^{\SO(3)}(\psi)^{-1}.
 \]
 Sol\`a\redstarfootnote{%
 See Sol\`a et al., \emph{A micro Lie theory for state estimation in robotics},
-Appendix C and D, Eqs.~(145) and (174).}) denotes the same factor by $V(\psi)$.
+Appendices B and D, Eqs.~(143)--(146) and (174).} denotes the same factor by $V(\psi)$.
 \end{revision}
 
 Equation~\eqref{eq:2.3} is also known as Rodrigues' formula. In an open neighborhood of the origin dense in $G$, we define $X=\log(g)\in\gfrak$ to be the \emph{exponential coordinates} of the group element $g$ and we regard the logarithmic map as a local chart of the manifold $G$.
@@ -493,35 +496,16 @@ We also have corresponding expressions for the $\SE(3)$ and $\SE(2)$ cases:
 \dot X&=\rev{\JopR^{-1}(X)}(V^b)\\
 &=\left(\id+\frac12\ad_X+\rev{\gamma_2(\|\psi\|)}\ad_X^2+\rev{\gamma_4(\|\psi\|)}\ad_X^4\right)(V^b),
 \end{align*}
-\begin{revision}
-To distinguish these scalar coefficients from the matrix function $A(\psi)$, write
-$\gamma_2(y),\gamma_4(y)$ for the original scalar functions $A(y),B(y)$.
-\end{revision}
 where
 \begin{align*}
 y^2\rev{\gamma_2(y)}&=2[1-\alpha(y)]+\frac12[\alpha(y)-\beta(y)],\\
 y^4\rev{\gamma_4(y)}&=[1-\alpha(y)]+\frac12[\alpha(y)-\beta(y)],
 \end{align*}
-and $\alpha(y)=(y/2)\cot(y/2)$, $\beta(y)\triangleq(y/2)^2/\sin^2(y/2)$. \del{Additionally the operator $\mathcal B_X$ can be written as} \rev{Additionally, for the coordinate vector $x=X^\vee=[\psi^T\ q^T]^T$ in the original rotation--translation order, the matrix representation of $\JopR^{-1}(X)$ is}
+and $\alpha(y)=(y/2)\cot(y/2)$, $\beta(y)\triangleq(y/2)^2/\sin^2(y/2)$. \del{Additionally the operator $\mathcal B_X$ can be written as} \rev{Additionally, for $x=X^\vee=[\psi^T\ q^T]^T$, the matrix representation of $\JopR^{-1}(X)$ is}
 \begin{equation*}
 \rev{\JR^{-1}(x)=\begin{bmatrix}A(\psi)^{-T}&0\\\star&A(\psi)^{-T}\end{bmatrix}
 =\begin{bmatrix}J_r^{\SO(3)}(\psi)^{-1}&0\\\star&J_r^{\SO(3)}(\psi)^{-1}\end{bmatrix}.}\tag{2.21}\label{eq:2.21}
 \end{equation*}
-\begin{revision}
-In modern $\SE(3)$ Jacobian notation this coupling is the $Q_r$ block.  With the
-rotation--translation ordering $x=[\psi^T\ q^T]^T$,
-\[
-J_r^{\SE(3)}(x)
-=\begin{bmatrix}
-J_r^{\SO(3)}(\psi)&0\\
-Q_r(q,\psi)&J_r^{\SO(3)}(\psi)
-\end{bmatrix},
-\]
-so the lower-left block of $J_r^{\SE(3)}(x)^{-1}$ is
-\[
--J_r^{\SO(3)}(\psi)^{-1}Q_r(q,\psi)J_r^{\SO(3)}(\psi)^{-1}.
-\]
-\end{revision}
 \emph{Proof.} Consider the expression of $\ad_X$ in equation~\eqref{eq:2.2}. If $X=(\widehat\psi,q)\in\se(3)$, then simple algebraic computations show that
 \begin{equation*}
 \ad_X^6=-2\|\psi\|^2\ad_X^4-\|\psi\|^4\ad_X^2.
@@ -1459,10 +1443,6 @@ Plugging this result in the definition of $\rev{\JopR^{-1}(X)}$, we have
 &=\id+\frac12\ad_X+\sum_{m=1}^{\infty}\frac{B_{2m}}{(2m)!}\bigl(a_m\ad_X^2+b_m\ad_X^4\bigr)\\
 &=\id+\frac12\ad_X+\rev{\gamma_2}\ad_X^2+\rev{\gamma_4}\ad_X^4,\tag{A.2}\label{eq:A.2}
 \end{align*}
-\begin{revision}
-Here $\gamma_2,\gamma_4$ denote the same scalar coefficients as in
-Lemma~\ref{lem:se3-exp-coordinate-derivative}.
-\end{revision}
 where
 \begin{align*}
 \rev{\gamma_2}&=\sum_{m=1}^{\infty}\frac{B_{2m}}{(2m)!}a_m
@@ -1497,7 +1477,7 @@ and
 \rev{\gamma_4}=\frac{1}{y^4}\bigl(1-\alpha(y)\bigr)
 +\frac{1}{2y^4}\left(\alpha(y)-\frac{(y/2)^2}{\sin^2(y/2)}\right).
 \end{equation*}
-Expression \eqref{eq:A.2} is now completely known. \del{To prove equation~\eqref{eq:2.21}, we write out explicitly what $\ad_X^2$ and $\ad_X^4$ look like.} \rev{To prove equation~\eqref{eq:2.21}, we now pass to the matrix representation $\bad_x$ in the original rotation--translation order, with $x=X^\vee=[\psi^T\ q^T]^T$, and write out $\bad_x^2$ and $\bad_x^4$.} From equation~\eqref{eq:2.2}
+Expression \eqref{eq:A.2} is now completely known. \del{To prove equation~\eqref{eq:2.21}, we write out explicitly what $\ad_X^2$ and $\ad_X^4$ look like.} \rev{To prove equation~\eqref{eq:2.21}, let $x=X^\vee=[\psi^T\ q^T]^T$ and write the corresponding matrices $\bad_x^2$ and $\bad_x^4$.} From equation~\eqref{eq:2.2}
 \begin{equation*}
 \rev{\bad_x^2=\begin{bmatrix}\widehat\psi^2&0\\ *&\widehat\psi^2\end{bmatrix}},
 \qquad
@@ -1528,9 +1508,10 @@ I_3+\frac12\widehat\psi+(1-\alpha(\|\psi\|))\dfrac{\widehat\psi^2}{\|\psi\|^2}&0
 *&I_3+\frac12\widehat\psi+(1-\alpha(\|\psi\|))\dfrac{\widehat\psi^2}{\|\psi\|^2}
 \end{bmatrix}}.
 \end{align*}
-\del{Now it is enough to note that the $(1,1)$ and the $(2,2)$ blocks are equal and that the $(1,1)$ block is exactly the $\mathcal B_{\widehat\psi}$ operator on $\SO(3)$.} \rev{In the original rotation--translation matrix ordering, the two diagonal blocks are equal to the $\SO(3)$ inverse right Jacobian $J_r^{\SO(3)}(\psi)^{-1}=A(\psi)^{-T}$.} From Lemma~\ref{lem:so3-exp-coordinate-derivative} we have
+\del{Now it is enough to note that the $(1,1)$ and the $(2,2)$ blocks are equal and that the $(1,1)$ block is exactly the $\mathcal B_{\widehat\psi}$ operator on $\SO(3)$.} \rev{The two diagonal blocks are the same $\SO(3)$ block appearing in Lemma~\ref{lem:so3-exp-coordinate-derivative}, hence each is $A(\psi)^{-T}$. Using $A(\psi)^{-T}=J_r^{\SO(3)}(\psi)^{-1}$, equation~\eqref{eq:2.21} becomes}
 \begin{equation*}
-\rev{\JR^{-1}(x)=\begin{bmatrix}A(\psi)^{-T}&0\\ *&A(\psi)^{-T}\end{bmatrix}}.
+\rev{\JR^{-1}(x)=\begin{bmatrix}A(\psi)^{-T}&0\\ *&A(\psi)^{-T}\end{bmatrix}
+=\begin{bmatrix}J_r^{\SO(3)}(\psi)^{-1}&0\\ *&J_r^{\SO(3)}(\psi)^{-1}\end{bmatrix}}.
 \end{equation*}
 \proofbox
 
