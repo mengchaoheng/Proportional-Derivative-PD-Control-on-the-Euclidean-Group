@@ -97,24 +97,7 @@ where we can express the velocity in body ($V^b$) or in spatial frame ($V^s$). S
 \ad_X(Y)=[X,Y]=XY-YX.
 \end{equation*}
 \begin{revision}
-Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and write
-\[
-X=x^\wedge,\qquad Y=y^\wedge,
-\qquad x=X^\vee,\qquad y=Y^\vee.
-\]
-For any linear map $T:\gfrak\to\gfrak$, its matrix in these coordinates is the
-unique matrix $\mathbf T\in\R^{n\times n}$ satisfying
-\[
-\bigl(T(Y)\bigr)^\vee=\mathbf T\,y
-\qquad\text{for all }Y\in\gfrak.
-\]
-Since $Y=y^\wedge$, this is equivalently
-\[
-\mathbf T\,y=\bigl(T(y^\wedge)\bigr)^\vee,
-\qquad\text{hence}\qquad
-\mathbf T=\vee\circ T\circ\wedge.
-\]
-Applying this to the two maps above gives
+After choosing a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$, write $X=x^\wedge$ and $Y=y^\wedge$. We use boldface for the matrices representing the linear maps $\Ad_g$ and $\ad_X$ in these coordinates. Thus
 \[
 \bigl(\Ad_g(Y)\bigr)^\vee=\bAd_g\,y,
 \qquad
@@ -138,50 +121,43 @@ V=\begin{bmatrix}\widehat\omega&v\\0&0\end{bmatrix},
 \end{equation*}
 where the operator $\widehat{\phantom{x}}:\R^3\to\so(3)$ is defined so that $\widehat{x}y=x\times y$ for all $x,y\in\R^3$.
 \begin{revision}
-Take an arbitrary
+
+Let
 \[
-Y=(\widehat\eta,u)\in\se(3),\qquad
-y=Y^\vee=
-\begin{bmatrix}\eta\\u\end{bmatrix},
+\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix},
 \qquad
-\nu=V^\vee=
-\begin{bmatrix}\omega\\v\end{bmatrix}.
+Y=(\widehat\eta,u),\qquad
+y=Y^\vee=\begin{bmatrix}\eta\\u\end{bmatrix}.
 \]
-The abstract maps give
-\[
-\Ad_g(Y)=gYg^{-1}
-=
-\begin{bmatrix}
-\widehat{R\eta} & \widehat pR\eta+Ru\\
-0&0
-\end{bmatrix},
-\]
-and
-\[
-\ad_V(Y)=[V,Y]
-=
-\begin{bmatrix}
-\widehat{\omega\times\eta} & \widehat v\eta+\widehat\omega u\\
-0&0
-\end{bmatrix}.
-\]
-Taking coordinates gives
+A direct calculation gives
 \[
 \bigl(\Ad_g(Y)\bigr)^\vee
 =
-\bAd_g y,
+\begin{bmatrix}
+R\eta\\
+\widehat pR\eta+Ru
+\end{bmatrix},
 \qquad
+\bigl(\ad_V(Y)\bigr)^\vee
+=
+\begin{bmatrix}
+\widehat\omega\eta\\
+\widehat v\eta+\widehat\omega u
+\end{bmatrix}.
+\]
+Since
+\[
+\bigl(\Ad_g(Y)\bigr)^\vee=\bAd_g\,y,
+\qquad
+\bigl(\ad_V(Y)\bigr)^\vee=\bad_\nu\,y,
+\]
+the corresponding matrix representations are
+\[
 \bAd_g=
 \begin{bmatrix}
 R&0\\
 \widehat pR&R
 \end{bmatrix},
-\]
-and
-\[
-\bigl(\ad_V(Y)\bigr)^\vee
-=
-\bad_\nu y,
 \qquad
 \bad_\nu=
 \begin{bmatrix}
@@ -189,8 +165,8 @@ and
 \widehat v&\widehat\omega
 \end{bmatrix}.
 \]
-\end{revision}
 
+\end{revision}
 
 On $\SE(3)$ and on its proper subgroups the exponential map $\exp:\gfrak\to G$ is a surjective map and a local diffeomorphism. Standard computations show:
 
