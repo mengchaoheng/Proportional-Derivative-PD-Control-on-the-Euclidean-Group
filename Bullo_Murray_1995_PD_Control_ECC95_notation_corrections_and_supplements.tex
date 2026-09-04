@@ -97,24 +97,36 @@ where we can express the velocity in body ($V^b$) or in spatial frame ($V^s$). S
 \ad_X(Y)=[X,Y]=XY-YX.
 \end{equation*}
 \begin{revision}
-Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and let
-$X=x^\wedge$, $Y=y^\wedge$.  The coordinate matrices of the two maps above satisfy
+Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and write
 \[
-\bAd_g y
-:=\bigl(\Ad_g(Y)\bigr)^\vee
-=\bigl(g\,y^\wedge g^{-1}\bigr)^\vee,
+X=x^\wedge,\qquad Y=y^\wedge,
+\qquad x=X^\vee,\qquad y=Y^\vee.
 \]
+For any linear map $T:\gfrak\to\gfrak$, its matrix in these coordinates is the
+unique matrix $\mathbf T\in\R^{n\times n}$ satisfying
 \[
-\bad_x y
-:=\bigl(\ad_X(Y)\bigr)^\vee
-=\bigl[x^\wedge,y^\wedge\bigr]^\vee
-=\bigl(x^\wedge y^\wedge-y^\wedge x^\wedge\bigr)^\vee.
+\bigl(T(Y)\bigr)^\vee=\mathbf T\,y
+\qquad\text{for all }Y\in\gfrak.
 \]
-Equivalently,
+Since $Y=y^\wedge$, this is equivalently
 \[
-\bAd_g=\vee\circ\Ad_g\circ\wedge,
+\mathbf T\,y=\bigl(T(y^\wedge)\bigr)^\vee,
+\qquad\text{hence}\qquad
+\mathbf T=\vee\circ T\circ\wedge.
+\]
+Applying this to the two maps above gives
+\[
+\bigl(\Ad_g(Y)\bigr)^\vee=\bAd_g\,y,
 \qquad
-\bad_x=\vee\circ\ad_{x^\wedge}\circ\wedge.
+\bigl(\ad_X(Y)\bigr)^\vee=\bad_x\,y,
+\]
+with
+\[
+\boxed{
+\bAd_g:=\vee\circ\Ad_g\circ\wedge,
+\qquad
+\bad_x:=\vee\circ\ad_{x^\wedge}\circ\wedge.
+}
 \]
 \end{revision}
 
@@ -126,27 +138,56 @@ V=\begin{bmatrix}\widehat\omega&v\\0&0\end{bmatrix},
 \end{equation*}
 where the operator $\widehat{\phantom{x}}:\R^3\to\so(3)$ is defined so that $\widehat{x}y=x\times y$ for all $x,y\in\R^3$.
 \begin{revision}
-For $Y=(\widehat\eta,u)$, set
+Take an arbitrary
 \[
-y=Y^\vee=\begin{bmatrix}\eta\\u\end{bmatrix},
+Y=(\widehat\eta,u)\in\se(3),\qquad
+y=Y^\vee=
+\begin{bmatrix}\eta\\u\end{bmatrix},
 \qquad
-\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix}.
+\nu=V^\vee=
+\begin{bmatrix}\omega\\v\end{bmatrix}.
 \]
-Then
+The abstract maps give
 \[
-\bAd_g=\begin{bmatrix}R&0\\\widehat pR&R\end{bmatrix},
+\Ad_g(Y)=gYg^{-1}
+=
+\begin{bmatrix}
+\widehat{R\eta} & \widehat pR\eta+Ru\\
+0&0
+\end{bmatrix},
+\]
+and
+\[
+\ad_V(Y)=[V,Y]
+=
+\begin{bmatrix}
+\widehat{\omega\times\eta} & \widehat v\eta+\widehat\omega u\\
+0&0
+\end{bmatrix}.
+\]
+Taking coordinates gives
+\[
+\bigl(\Ad_g(Y)\bigr)^\vee
+=
+\bAd_g y,
 \qquad
-\bad_\nu=\begin{bmatrix}\widehat\omega&0\\\widehat v&\widehat\omega\end{bmatrix},
+\bAd_g=
+\begin{bmatrix}
+R&0\\
+\widehat pR&R
+\end{bmatrix},
 \]
-and their action is
+and
 \[
-(\Ad_gY)^\vee=\bAd_g y
-=\begin{bmatrix}R\eta\\ \widehat pR\eta+Ru\end{bmatrix},
-\]
-\[
-(\ad_VY)^\vee=\bad_\nu y
-=\begin{bmatrix}\widehat\omega\eta\\
-\widehat v\eta+\widehat\omega u\end{bmatrix}.
+\bigl(\ad_V(Y)\bigr)^\vee
+=
+\bad_\nu y,
+\qquad
+\bad_\nu=
+\begin{bmatrix}
+\widehat\omega&0\\
+\widehat v&\widehat\omega
+\end{bmatrix}.
 \]
 \end{revision}
 

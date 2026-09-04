@@ -99,56 +99,122 @@ where we can express the velocity in body ($V^b$) or in spatial frame ($V^s$). T
 \Ad_g(Y)=gYg^{-1},\qquad \ad_X(Y)=[X,Y]=XY-YX.
 \end{equation*}
 \begin{revision}
-Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and let
-$X=x^\wedge$, $Y=y^\wedge$.  The coordinate matrices of the two maps above are
-characterized by
+Choose a basis $\mathcal E=(E_1,\ldots,E_n)$ of $\gfrak$ and write
 \[
-\bAd_g y
-:=\bigl(\Ad_g(Y)\bigr)^\vee
-=\bigl(g\,y^\wedge g^{-1}\bigr)^\vee,
+X=x^\wedge,\qquad Y=y^\wedge,
+\qquad x=X^\vee,\qquad y=Y^\vee.
 \]
+For any linear map $T:\gfrak\to\gfrak$, its matrix in these coordinates is the
+unique matrix $\mathbf T\in\R^{n\times n}$ satisfying
 \[
-\bad_x y
-:=\bigl(\ad_X(Y)\bigr)^\vee
-=\bigl[x^\wedge,y^\wedge\bigr]^\vee
-=\bigl(x^\wedge y^\wedge-y^\wedge x^\wedge\bigr)^\vee.
+\bigl(T(Y)\bigr)^\vee=\mathbf T\,y
+\qquad\text{for all }Y\in\gfrak.
 \]
-Equivalently,
+Since $Y=y^\wedge$, this is equivalently
 \[
-\bAd_g=\vee\circ\Ad_g\circ\wedge,
+\mathbf T\,y=\bigl(T(y^\wedge)\bigr)^\vee,
+\qquad\text{hence}\qquad
+\mathbf T=\vee\circ T\circ\wedge.
+\]
+Applying this to the two maps above gives
+\[
+\bigl(\Ad_g(Y)\bigr)^\vee=\bAd_g\,y,
 \qquad
-\bad_x=\vee\circ\ad_{x^\wedge}\circ\wedge.
+\bigl(\ad_X(Y)\bigr)^\vee=\bad_x\,y,
+\]
+with
+\[
+\boxed{
+\bAd_g:=\vee\circ\Ad_g\circ\wedge,
+\qquad
+\bad_x:=\vee\circ\ad_{x^\wedge}\circ\wedge.
+}
 \]
 \end{revision}
 
-On $\SE(3)$ and $\se(3)$ we represent a group element $g=(R,p)\in\SO(3)\times\R^3$ and a velocity $V=(\widehat\omega,v)\in\so(3)\times\R^3$ using homogeneous coordinates,
+On $\SE(3)$ and $\se(3)$ we represent a group element
+$g=(R,p)\in\SO(3)\times\R^3$ and a velocity
+$V=(\widehat\omega,v)\in\so(3)\times\R^3$ using homogeneous coordinates,
 \begin{equation*}
-g=\begin{bmatrix}R&p\\0&1\end{bmatrix},\qquad
-V=\begin{bmatrix}\widehat\omega&v\\0&0\end{bmatrix},
-\end{equation*}
-where the operator $\widehat{\phantom{x}}:\R^3\to\so(3)$ is defined so that $\widehat x y=x\times y$ for all $x,y\in\R^3$. Writing $V$ as column vector $(\omega,v)$, simple algebra shows
-\begin{equation*}
-\rev{\bAd_g}=\begin{bmatrix}R&0\\\widehat pR&R\end{bmatrix},\qquad
-\rev{\bad_\nu}=\begin{bmatrix}\widehat\omega&0\\\widehat v&\widehat\omega\end{bmatrix}.\tag{2.2}\label{eq:2.2}
-\end{equation*}
-\begin{revision}
-For $Y=(\widehat\eta,u)$, set
-\[
-y=Y^\vee=\begin{bmatrix}\eta\\u\end{bmatrix},
+g=
+\begin{bmatrix}
+R&p\\
+0&1
+\end{bmatrix},
 \qquad
-\nu=V^\vee=\begin{bmatrix}\omega\\v\end{bmatrix}.
-\]
-Then equation~\eqref{eq:2.2} gives the coordinate actions
+V=
+\begin{bmatrix}
+\widehat\omega&v\\
+0&0
+\end{bmatrix},
+\end{equation*}
+where the operator $\widehat{\phantom{x}}:\R^3\to\so(3)$ is defined so
+that $\widehat{x}y=x\times y$ for all $x,y\in\R^3$.
+
+\begin{revision}
+Take an arbitrary
 \[
-(\Ad_gY)^\vee=\bAd_g y
-=\begin{bmatrix}R\eta\\ \widehat pR\eta+Ru\end{bmatrix},
+Y=(\widehat\eta,u)\in\se(3),\qquad
+y=Y^\vee=
+\begin{bmatrix}\eta\\u\end{bmatrix},
+\qquad
+\nu=V^\vee=
+\begin{bmatrix}\omega\\v\end{bmatrix}.
+\]
+The abstract maps give
+\[
+\Ad_g(Y)=gYg^{-1}
+=
+\begin{bmatrix}
+\widehat{R\eta} & \widehat pR\eta+Ru\\
+0&0
+\end{bmatrix},
+\]
+and
+\[
+\ad_V(Y)=[V,Y]
+=
+\begin{bmatrix}
+\widehat{\omega\times\eta} & \widehat v\eta+\widehat\omega u\\
+0&0
+\end{bmatrix}.
+\]
+Taking coordinates therefore yields
+\[
+\bigl(\Ad_g(Y)\bigr)^\vee
+=
+\begin{bmatrix}R\eta\\ \widehat pR\eta+Ru\end{bmatrix}
+=
+\bAd_g
+\begin{bmatrix}\eta\\u\end{bmatrix},
 \]
 \[
-(\ad_VY)^\vee=\bad_\nu y
-=\begin{bmatrix}\widehat\omega\eta\\
-\widehat v\eta+\widehat\omega u\end{bmatrix}.
+\bigl(\ad_V(Y)\bigr)^\vee
+=
+\begin{bmatrix}\widehat\omega\eta\\ \widehat v\eta+\widehat\omega u\end{bmatrix}
+=
+\bad_\nu
+\begin{bmatrix}\eta\\u\end{bmatrix}.
 \]
+Hence the corresponding $6\times6$ matrices are
 \end{revision}
+
+\begin{equation*}
+\rev{\bAd_g}
+=
+\begin{bmatrix}
+R&0\\
+\widehat pR&R
+\end{bmatrix},
+\qquad
+\rev{\bad_\nu}
+=
+\begin{bmatrix}
+\widehat\omega&0\\
+\widehat v&\widehat\omega
+\end{bmatrix}.
+\tag{2.2}\label{eq:2.2}
+\end{equation*}
 
 On $\SE(3)$ and its proper subgroups the exponential map $\exp:\gfrak\to G$ is a surjective map and a local diffeomorphism. Standard computations show:
 
